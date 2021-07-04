@@ -1,0 +1,223 @@
+
+/* =======================================================
+*
+* 	Template Style
+*fh5co-logo
+* ======================================================= */
+body {
+  font-family: "Cormorant Garamond", Arial, serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #828282;
+}
+
+
+a {
+  color: #1d2f3b;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+a:hover, a:active, a:focus {
+  color: #1d2f3b;
+  outline: none;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+h1, h2, h3, h4, h5, h6, figure {
+  color: #000;
+  font-family: "Cormorant Garamond", Arial, serif;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+}
+
+
+
+.fh5co-nav .top-menu {
+  padding: 12px 0;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.fh5co-nav .top-menu:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: '';
+  background: #fbf2eb;
+}
+
+.fh5co-nav #fh5co-logo {
+  font-size: 50px;
+  margin: 0;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  position: relative;
+}
+.fh5co-nav #logo {
+  width: 200%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fh5co-nav #fh5co-logo a span {
+  color: #1d2f3b;
+}
+.fh5co-nav #fh5co-logo a small {
+  font-family: "Cormorant Garamond", Arial, serif;
+  font-size: 12px;
+}
+
+.fh5co-nav a {
+  padding: 5px 10px;
+  color: #000;
+}
+
+.fh5co-nav .menu-2 {
+  padding: 2em 0;
+}
+.fh5co-nav ul {
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+.fh5co-nav ul li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: inline;
+  font-weight: 700;
+}
+.fh5co-nav ul li a {
+  font-size: 14px;
+  padding: 30px 15px;
+  color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.fh5co-nav ul li a:hover, .fh5co-nav ul li a:focus, .fh5co-nav ul li a:active {
+  color: black;
+}
+
+
+
+.fh5co-nav ul li.active > a {
+  color: #000 !important;
+  position: relative;
+}
+.fh5co-nav ul li.active > a:before {
+  position: absolute;
+  bottom: 11px;
+  left: 0;
+  right: 0;
+  content: '';
+  width: 40%;
+  height: 1px;
+  margin: 0 auto;
+  background: #000;
+}
+
+
+.fh5co-heading {
+  margin-bottom: 5em;
+  position: relative;
+}
+.fh5co-heading:after {
+  position: absolute;
+  top: 28px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  content: '';
+  background: black;
+  z-index: -1;
+}
+.fh5co-heading h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #000;
+  font-family: "Sacramento", cursive;
+}
+.fh5co-heading h2 span {
+  padding: 20px 30px;
+  border: 1px solid #000;
+  z-index: 8;
+  position: relative;
+}
+.fh5co-heading h2 span:after {
+  position: absolute;
+  top: -10px;
+  bottom: 10px;
+  left: -10px;
+  right: 10px;
+  content: '';
+  background: #fbf2eb;
+  z-index: -1;
+}
+.fh5co-heading p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #828282;
+}
+.fh5co-heading.fh5co-heading-sidebar {
+  margin-bottom: 2em;
+}
+.fh5co-heading.fh5co-heading-sidebar:before {
+  top: 20px;
+}
+.fh5co-heading.fh5co-heading-sidebar h2 {
+  font-size: 30px;
+}
+.fh5co-heading.fh5co-heading-sidebar h2 span {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  z-index: 8;
+  position: relative;
+}
+
+
+.fh5co-staff {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.fh5co-staff img {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+.fh5co-staff h3 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+.fh5co-staff p {
+  margin-bottom: 30px;
+}
+.fh5co-staff .role {
+  color: gray;
+  margin-bottom: 30px;
+  font-weight: normal;
+  display: block;
+}
+
+
+
+
