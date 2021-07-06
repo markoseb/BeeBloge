@@ -47,11 +47,13 @@ class BlogPost(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
+    category = db.Column(db.String(140),nullable=False)
     text = db.Column(db.Text, nullable=False)
 
-    def __init__(self, title, text, user_id):
+    def __init__(self, title, text, user_id,category="Category"):
         self.title = title
         self.text = text
+        self.category = category
         self.user_id =user_id
 
 
