@@ -1,9 +1,7 @@
 # [BeeBloge](https://github.com/markoseb/BeeBloge) -work in progress
 Repositoy for blog projects in Poland
 
-## Preview
- 
-![BeeBloge Preview](https://github.com/markoseb/BeeBloge/sampleImg/blog.png)
+
 
 ## Download and Installation
 
@@ -31,7 +29,9 @@ Bloge repository. Using current api version you can:
 *	view posts
 
 
-
+## Preview
+ 
+![BeeBloge Preview](https://github.com/markoseb/BeeBloge/blob/master/sampleImg/blog.png?raw=true)
 
 © 2016 Free HTML5. All Rights Reserved.
 Designed by FreeHTML5.co Demo Images: Unsplash

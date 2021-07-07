@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{%import "bootstrap/wtf.html" as wtf%}
+	{%import "bootstrap/wtf.html" as wtf%}
 	{% block content %}
 
 
@@ -29,13 +29,15 @@
 									{{wtf.form_field(form.category, class="form-control",rows="20")}}
 								</div>
 								<div class="col-xs-9">
-									{{wtf.form_field(form.text, class="form-control",rows="20")}}
+									{{ form.text.label() }}
+									{{ form.text(class="form-control") }}
 								</div>
 								<div class="col-xs-9">
 									{{ form.submit(class="btn btn-outline-info") }}
 								</div>
 							</form>
-
+							{{ ckeditor.load() }}
+							{{ ckeditor.config(name='text') }}
 						</div>
 
 
