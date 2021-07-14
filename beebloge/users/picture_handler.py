@@ -5,16 +5,16 @@ from PIL import Image
 from flask import current_app
 
 
-def add_profile_pic(pic_upload, username):
+def add_pic(pic_upload, username_post,folder_name,pic_size=(200, 200)):
     filename = pic_upload.filename
     # "mypicture.jpg"
     ext_type = filename.split('.')[-1]
     # "username.jpg"
-    storage_filename = str(username) + '.' + ext_type
+    storage_filename = str(username_post) + '.' + ext_type
 
-    filepath = os.path.join(current_app.root_path, 'static\profile_pics', storage_filename)
+    filepath = os.path.join(current_app.root_path, f'static\{folder_name}', storage_filename)
 
-    output_size = (200, 200)
+    output_size = pic_size
 
     pic = Image.open(pic_upload)
     pic.thumbnail(output_size)

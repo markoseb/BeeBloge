@@ -1,10 +1,11 @@
+# <editor-fold desc="Description">
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from beebloge import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from beebloge.models import User, BlogPost
 from beebloge.users.forms import RegistrationForm, LoginForm, UpdateUserForm
-from beebloge.users.picture_handler import add_profile_pic
+from beebloge.users.picture_handler import add_pic
 
 
 users = Blueprint('users', __name__)
@@ -70,14 +71,14 @@ def account():
     form = UpdateUserForm()
 
     if form.validate_on_submit():
-        print(form)
-        if form.picture.data:
-            username = current_user.username
-            pic = add_profile_pic(form.picture.data,username)
-            current_user.profile_image = pic
 
         current_user.username = form.username.data
         current_user.email = form.email.data
+        if form.picture.data:
+            username = current_user.username
+            pic = add_pic(form.picture.data, username,'profile_pics',(800,800))
+            current_user.profile_image = pic
+
         db.session.commit()
         flash('User Account Updated')
         return redirect(url_for('users.account'))
@@ -85,6 +86,7 @@ def account():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
+
 
     profile_image = url_for('static', filename='profile_pics/' + current_user.profile_image)
     return render_template('account.html', profile_image=profile_image, form=form)
@@ -96,3 +98,4 @@ def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     blog_posts = BlogPost.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
     return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
+# </editor-fold>

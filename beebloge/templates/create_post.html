@@ -19,7 +19,7 @@
 					<div class="row">
 
 						<div class="container">
-							<form class="form-group row" method="POST">
+							<form class="form-group row" method="POST" action="" enctype="multipart/form-data">
 								{{ form.hidden_tag() }}
 
 								<div class="col-xs-9">
@@ -29,12 +29,17 @@
 									{{wtf.form_field(form.category, class="form-control",rows="20")}}
 								</div>
 								<div class="col-xs-9">
-									{{ form.text.label() }}
-									{{ form.text(class="form-control") }}
+									{{wtf.form_field(form.text, class="form-control")}}
 								</div>
-								<div class="col-xs-9">
-									{{ form.submit(class="btn btn-outline-info") }}
+								<div class="col-xs-9" style="float: left; width: 300px">
+									{{wtf.form_field(form.picture, class="form-control-file")}}
 								</div>
+
+								<div class="col-xs-9" style="float: right; width: 420px">
+									{{ form.submit(class="btn btn-outline-info",style="height:50px;width:100px") }}
+								</div>
+
+								{
 							</form>
 							{{ ckeditor.load() }}
 							{{ ckeditor.config(name='text') }}

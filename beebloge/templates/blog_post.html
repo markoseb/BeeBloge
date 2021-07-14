@@ -5,7 +5,10 @@
   <h2>Written by: {{post.author.username}}</h2>
   <h2>Category: {{post.category}}</h2>
   <h3>Published: {{ post.date.strftime('%B %d, %Y') }}</h3>
-  <p>{{post.text}}</p>
+  <p contenteditable="true"  >{{ post.text|safe }}</p>
+
+
+</div>
    {% if post.author == current_user %}
      <div>
        <a class="btn btn-secondary" href="{{ url_for('blog_posts.update', blog_post_id=post.id) }}">Update</a>
@@ -13,7 +16,6 @@
      </div>
    {% endif %}
 </div>
-
 
 
 

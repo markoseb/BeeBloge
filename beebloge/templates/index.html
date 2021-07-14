@@ -32,9 +32,9 @@
 									<span class="category">{{
 										post.category }}</span>
 								</div>
-								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img class="img-responsive" src="/static/blog-1.jpg" alt=""></a>
+								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img class="img-responsive" src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
-									<p>{{ post.text[:500] }}...</p>
+									<p>{{ post.text[:500]|safe }}...</p>
 									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
 										post.author.username }}</a>
 
@@ -53,9 +53,9 @@
 									<span class="category">{{
 										post.category }}</span>
 								</div>
-								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img class="img-responsive" src="/static/blog-1.jpg" alt=""></a>
+								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img class="img-responsive" src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
-									<p>{{ post.text[:500] }}...</p>
+									<p>{{ post.text[:500]|safe }}...</p>
 									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
 										post.author.username }}</a>
 

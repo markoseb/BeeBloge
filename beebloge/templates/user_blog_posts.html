@@ -14,6 +14,8 @@
           <h2><a href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a></h2>
           Written by: <a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
           <p class="text-muted">Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+            <img class="img-responsive" src="{{ url_for('static', filename='post_pics/' + blog_posts.post_image) }}" alt="">
+            <p>{{post.post_image|safe}}</p>
           <br>
             <p>{{post.text}}</p>
           <br>

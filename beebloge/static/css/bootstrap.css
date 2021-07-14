@@ -964,6 +964,7 @@ pre code {
 
 .col-xs-9 {
   width: 75%;
+  display: inline;
 }
 
 .col-xs-10 {

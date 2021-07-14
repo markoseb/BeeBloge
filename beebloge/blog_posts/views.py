@@ -1,9 +1,10 @@
+# <editor-fold desc="Description">
 from flask import render_template,url_for,flash, redirect,request,Blueprint
 from flask_login import current_user,login_required
 from beebloge import db
 from beebloge.models import BlogPost
+from beebloge.users.picture_handler import add_pic
 from beebloge.blog_posts.forms import BlogPostForm
-
 blog_posts = Blueprint('blog_posts',__name__)
 
 @blog_posts.route('/create',methods=['GET','POST'])
@@ -11,13 +12,19 @@ blog_posts = Blueprint('blog_posts',__name__)
 def create_post():
     form = BlogPostForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() :
+
+        if form.picture.data:
+            imgname = "".join([form.title.data , form.category.data])
+            pic = add_pic(form.picture.data, imgname, 'post_pics',(800,800))
 
         blog_post = BlogPost(title=form.title.data,
                              text=form.text.data,
                              category=form.category.data,
-                             user_id=current_user.id
-                             )
+                             user_id=current_user.id,
+                             post_image=pic)
+
+
         db.session.add(blog_post)
         db.session.commit()
         flash("Blog Post Created")
@@ -32,7 +39,7 @@ def blog_post(blog_post_id):
     # grab the requested blog post by id number or return 404
     blog_post = BlogPost.query.get_or_404(blog_post_id)
     return render_template('blog_post.html',title=blog_post.title,
-                            date=blog_post.date,post=blog_post,category=blog_post.category
+                            date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image
     )
 
 @blog_posts.route("/<int:blog_post_id>/update", methods=['GET', 'POST'])
@@ -44,10 +51,15 @@ def update(blog_post_id):
         abort(403)
 
     form = BlogPostForm()
-    if form.validate_on_submit():
+    if form.picture.data:
+        imgname = "".join([form.title.data, form.category.data])
+        pic = add_pic(form.picture.data, imgname, 'post_pics', (800, 800))
+        blog_post.post_image = pic
+    if form.validate_on_submit() :
         blog_post.title = form.title.data
         blog_post.text = form.text.data
         blog_post.category = form.category.data
+
         db.session.commit()
         flash('Post Updated')
         return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
@@ -57,6 +69,8 @@ def update(blog_post_id):
         form.title.data = blog_post.title
         form.text.data = blog_post.text
         form.category.data = blog_post.category
+        form.picture.data =blog_post.post_image
+
     return render_template('create_post.html', title='Update',
                            form=form)
 
@@ -71,3 +85,4 @@ def delete_post(blog_post_id):
     db.session.commit()
     flash('Post has been deleted')
     return redirect(url_for('core.index'))
+# </editor-fold>

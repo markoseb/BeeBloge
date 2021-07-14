@@ -45,16 +45,18 @@ class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # Notice how we connect the BlogPost to a particular author
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    post_image = db.Column(db.String(140), nullable=False, default='/static/post_pics/blog-1.jpg')
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
     category = db.Column(db.String(140),nullable=False)
     text = db.Column(db.Text, nullable=False)
 
-    def __init__(self, title, text, user_id,category="Category"):
+    def __init__(self, title, text, user_id,post_image,category="Category" ):
         self.title = title
         self.text = text
         self.category = category
         self.user_id =user_id
+        self.post_image=post_image
 
 
     def __repr__(self):
