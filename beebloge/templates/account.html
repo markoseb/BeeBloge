@@ -1,31 +1,31 @@
 {% extends "base.html" %}
-{%import "bootstrap/wtf.html" as wtf%}
-{% block content %}
+  {%import "bootstrap/wtf.html" as wtf%}
+  {% block content %}
 
-<div class="jumbotron">
-  <div align='center'>
-    <h1 >Welcome to the page for {{current_user.username}}</h1>
-    <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
-    <p>{{ current_user.email }}</p>
+  <div class="jumbotron">
+    <div align='center'>
+      <h1>Welcome to the page for {{current_user.first_name}}</h1>
+      <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+      <p>{{ current_user.email }}</p>
+    </div>
   </div>
-</div>
-<div class="container">
-  <form  method="POST" action = "" enctype="multipart/form-data">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-      {{wtf.form_field(form.username, class="form-control")}}
-    </div>
-    <div class="form-group">
-      {{wtf.form_field(form.email, class="form-control")}}
-    </div>
-    <div class="form-group">
-      {{wtf.form_field(form.picture, class="form-control-file")}}
-    </div>
-    <div class="form-group">
+  <div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{wtf.form_field(form.username, class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{wtf.form_field(form.email, class="form-control")}}
+      </div>
+      <div class="form-group">
+        {{wtf.form_field(form.picture, class="form-control-file")}}
+      </div>
+      <div class="form-group">
         {{ form.submit(class="btn btn-primary") }}
-    </div>
-  </form>
+      </div>
+    </form>
 
-</div>
+  </div>
 
 {% endblock content %}

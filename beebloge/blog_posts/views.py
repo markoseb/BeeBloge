@@ -1,14 +1,17 @@
 # <editor-fold desc="Description">
 from flask import render_template,url_for,flash, redirect,request,Blueprint
-from flask_login import current_user,login_required
+from flask_login import login_required
+from flask_security import current_user
 from beebloge import db
 from beebloge.models import BlogPost
 from beebloge.users.picture_handler import add_pic
+from beebloge.users.views import requires_roles
 from beebloge.blog_posts.forms import BlogPostForm
 blog_posts = Blueprint('blog_posts',__name__)
 
 @blog_posts.route('/create',methods=['GET','POST'])
 @login_required
+@requires_roles('admin')
 def create_post():
     form = BlogPostForm()
 

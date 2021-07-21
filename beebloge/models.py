@@ -1,8 +1,7 @@
 from beebloge import db,login_manager
 from datetime import datetime
-from werkzeug.security import generate_password_hash,check_password_hash
-from flask_login import UserMixin
-
+from flask_security import RoleMixin,UserMixin
+from beebloge.utils import verify_password
 
 
 # The user_loader decorator allows flask-login to load the current user
@@ -12,6 +11,11 @@ from flask_login import UserMixin
 def load_user(user_id):
     return User.query.get(user_id)
 
+# Create a table of users and user roles
+roles_users_table = db.Table('roles_users',
+                            db.Column('user_id', db.Integer(), db.ForeignKey('users.id')),
+                            db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+
 class User(db.Model, UserMixin):
 
     # Create a table in the db
@@ -20,22 +24,34 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     profile_image = db.Column(db.String(20), nullable=False, default='default_profile.png')
     email = db.Column(db.String(64), unique=True, index=True)
-    username = db.Column(db.String(64), unique=True, index=True)
-    password_hash = db.Column(db.String(128))
+    first_name = db.Column(db.String(64), unique=True, index=True)
+    password = db.Column(db.String(128))
     # This connects BlogPosts to a User Author.
     posts = db.relationship('BlogPost', backref='author', lazy=True)
+    active = db.Column(db.Boolean)
+    confirmed_at = db.Column(db.DateTime)
+    roles = db.relationship('Role', secondary=roles_users_table, backref=db.backref('users'), lazy='dynamic')
 
-    def __init__(self, email, username, password):
-        self.email = email
-        self.username = username
-        self.password_hash = generate_password_hash(password)
 
-    def check_password(self,password):
-        # https://stackoverflow.com/questions/23432478/flask-generate-password-hash-not-constant-output
-        return check_password_hash(self.password_hash,password)
+
+
+    def check_password(self, password):
+        return verify_password(password, self.password)
 
     def __repr__(self):
-        return f"UserName: {self.username}"
+        return f"UserName: {self.username} roles: {self.roles[0]}"
+
+
+
+class Role(db.Model,RoleMixin):
+  id = db.Column(db.Integer(), primary_key=True)
+  name = db.Column(db.String(80), unique=True)
+  description = db.Column(db.String(255))
+
+  def __init__(self, id, name, description):
+      self.id = id
+      self.name = name
+      self.description = description
 
 class BlogPost(db.Model):
     # Setup the relationship to the User table
@@ -61,3 +77,4 @@ class BlogPost(db.Model):
 
     def __repr__(self):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
+

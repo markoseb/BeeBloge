@@ -1,10 +1,11 @@
 import os
-from flask import Flask,request,send_from_directory,url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
+from flask_admin import Admin
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -24,11 +25,14 @@ app.config['SECRET_KEY'] = 'mysecret'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+app.config['SECURITY_PASSWORD_HASH'] ='sha512_crypt'
+app.config['SECURITY_PASSWORD_SALT'] = 'sha256'
 
 
 
 db = SQLAlchemy(app)
+admin=Admin(app)
+
 Migrate(app,db)
 
 
