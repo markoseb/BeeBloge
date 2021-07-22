@@ -35,7 +35,6 @@ var initSample = ( function() {
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'editor' );
 
-
 		}
 	};
 

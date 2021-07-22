@@ -53,6 +53,8 @@ class Role(db.Model,RoleMixin):
       self.name = name
       self.description = description
 
+
+
 class BlogPost(db.Model):
     # Setup the relationship to the User table
     users = db.relationship(User)
@@ -66,6 +68,7 @@ class BlogPost(db.Model):
     title = db.Column(db.String(140), nullable=False)
     category = db.Column(db.String(140),nullable=False)
     text = db.Column(db.Text, nullable=False)
+    comments = db.relationship('Comment', backref=db.backref('blog_post'), lazy='dynamic')
 
     def __init__(self, title, text, user_id,post_image,category="Category" ):
         self.title = title
@@ -78,3 +81,20 @@ class BlogPost(db.Model):
     def __repr__(self):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    users = db.relationship(User)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    body = db.Column(db.String(140))
+    author = db.Column(db.String(40))
+    timestamp = db.Column(db.DateTime)
+    post_id = db.Column('post_id',db.Integer, db.ForeignKey('blog_post.id'))
+
+    def __init__(self, body, post_id,user_id,author):
+        self.body = body
+        self.post_id = post_id
+        self.user_id = user_id
+        self.author = author
+
+    def __repr__(self):
+        return f"Comment('{self.body}', '{self.timestamp}')"

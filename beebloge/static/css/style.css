@@ -422,3 +422,6 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 
+.new-comment { width: 1150px; height: 75px border:1px solid #000000;  margin-bottom: 60px;
+  font-size: 21px;
+  font-weight: 200;resize:none;margin: 0 0 -20px 10px;}

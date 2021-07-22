@@ -3,10 +3,10 @@ from flask import render_template,url_for,flash, redirect,request,Blueprint
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db
-from beebloge.models import BlogPost
+from beebloge.models import BlogPost,Comment
 from beebloge.users.picture_handler import add_pic
 from beebloge.users.views import requires_roles
-from beebloge.blog_posts.forms import BlogPostForm
+from beebloge.blog_posts.forms import BlogPostForm,CommentForm
 blog_posts = Blueprint('blog_posts',__name__)
 
 @blog_posts.route('/create',methods=['GET','POST'])
@@ -19,7 +19,7 @@ def create_post():
 
         if form.picture.data:
             imgname = "".join([form.title.data , form.category.data])
-            pic = add_pic(form.picture.data, imgname, 'post_pics',(800,800))
+            pic = add_pic(form.picture.data, imgname, 'post_pics',(600,600))
 
         blog_post = BlogPost(title=form.title.data,
                              text=form.text.data,
@@ -37,12 +37,19 @@ def create_post():
 
 
 
-@blog_posts.route('/<int:blog_post_id>')
+@blog_posts.route('/<int:blog_post_id>', methods=["GET", "POST"])
 def blog_post(blog_post_id):
     # grab the requested blog post by id number or return 404
     blog_post = BlogPost.query.get_or_404(blog_post_id)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(body=form.comment.data, post_id=blog_post.id,user_id=current_user.id,author=current_user.first_name)
+        db.session.add(comment)
+        db.session.commit()
+        flash("Your comment has been added to the post", "success")
+
     return render_template('blog_post.html',title=blog_post.title,
-                            date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image
+                            date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image,form=form
     )
 
 @blog_posts.route("/<int:blog_post_id>/update", methods=['GET', 'POST'])
@@ -89,3 +96,4 @@ def delete_post(blog_post_id):
     flash('Post has been deleted')
     return redirect(url_for('core.index'))
 # </editor-fold>
+
