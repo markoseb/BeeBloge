@@ -13,6 +13,9 @@ body {
 }
 
 
+
+
+
 a {
   color: #1d2f3b;
   -webkit-transition: 0.5s;
@@ -61,6 +64,8 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 150px;
   height: 150px;
   margin: 0 auto;
+  margin-bottom: 1em;/* free place between logo and mój blog*/
+  display: table;
   position: relative;
 }
 .fh5co-nav #logo {
@@ -78,7 +83,11 @@ h1, h2, h3, h4, h5, h6, figure {
   font-family: "Cormorant Garamond", Arial, serif;
   font-size: 12px;
 }
-
+@media screen and (max-width: 768px) {
+  .fh5co-nav .menu-1 {
+    display: none;
+  }
+}
 .fh5co-nav a {
   padding: 5px 10px;
   color: #000;
@@ -89,7 +98,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-nav ul {
   padding: 0;
-  margin: 5px 0 0 0;
+  margin: 7px 0 0 0;
 }
 .fh5co-nav ul li {
   padding: 0;
@@ -99,7 +108,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-weight: 700;
 }
 .fh5co-nav ul li a {
-  font-size: 14px;
+  font-size: 18px;
   padding: 30px 15px;
   color: rgba(0, 0, 0, 0.7);
   -webkit-transition: 0.5s;
@@ -116,6 +125,9 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000 !important;
   position: relative;
 }
+/* =======================================================
+* Underline head title
+* ======================================================= */
 .fh5co-nav ul li.active > a:before {
   position: absolute;
   bottom: 11px;
@@ -136,7 +148,7 @@ h1, h2, h3, h4, h5, h6, figure {
 * ======================================================= */
 
 .fh5co-heading {
-  margin-bottom: 5em;
+  margin-bottom: 6em;/*Free place between title and post*/
   position: relative;
 }
 .fh5co-heading:after {

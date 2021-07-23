@@ -3681,7 +3681,7 @@ tbody.collapse.in {
 
 .navbar-static-top {
   z-index: 1000;
-  border-width: 0 0 1px;
+  border-width: 0  1px;
 }
 @media (min-width: 768px) {
   .navbar-static-top {

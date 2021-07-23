@@ -11,17 +11,18 @@
 
   </div>
   {% if post.author == current_user and current_user.has_role('admin') %}
-  <div>
-    <a class="btn btn-secondary" href="{{ url_for('blog_posts.update', blog_post_id=post.id) }}">Update</a>
+  <div style="margin-bottom: 30px;">
+    <a class="btn btn-primary" href="{{ url_for('blog_posts.update', blog_post_id=post.id) }}">Update</a>
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_modal">Delete</button>
   </div>
   {% endif %}
   {% if current_user.is_authenticated %}
   <form class="form-group row" method="POST" action="">
     {{ form.hidden_tag() }}
-    {{form.comment.label}}
-    {{form.comment(class="new-comment")}}
-    {{ form.submit(class="btn btn-primary",style="margin: 0 0 -30px 10px;") }}
+    {{form.comment.label(style="float: right; width: 1160px")}}
+    {{form.comment(class="new-comment",style="margin: 0 0 -30px 10px;margin-bottom: 1em;")}}
+    {{ form.submit(class="btn btn-primary",style="margin: 0 0 -30px 10px;margin-bottom: 3em;") }}
+
   </form>
   {% endif %}
 

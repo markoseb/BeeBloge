@@ -2,9 +2,9 @@
   {%import "bootstrap/wtf.html" as wtf%}
   {% block content %}
 
-  <div class="jumbotron">
+  <div class="jumbotron" >
     <div align='center'>
-      <h1>Welcome to the page for {{current_user.first_name}}</h1>
+      <h1>Witaj {{current_user.first_name}}!</h1>
       <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
       <p>{{ current_user.email }}</p>
     </div>
