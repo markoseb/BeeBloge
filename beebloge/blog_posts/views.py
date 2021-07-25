@@ -97,3 +97,18 @@ def delete_post(blog_post_id):
     return redirect(url_for('core.index'))
 # </editor-fold>
 
+
+@blog_posts.route("/<int:comment_id>/comment/delete", methods=['POST'])
+@login_required
+def delete_comment(comment_id):
+    form = CommentForm()
+
+    comment = Comment.query.get_or_404(comment_id)
+    if form.user_id != current_user.id or requires_roles('admin') :
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment has been deleted')
+    return redirect(url_for('blog_posts.index'))
+# </editor-fold>
+

@@ -5,7 +5,6 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
-from flask_admin import Admin
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -31,7 +30,7 @@ app.config['SECURITY_PASSWORD_SALT'] = 'sha256'
 
 
 db = SQLAlchemy(app)
-admin=Admin(app)
+
 
 Migrate(app,db)
 
@@ -47,7 +46,7 @@ login_manager.init_app(app)
 
 # Tell users what view to go to when they need to login.
 login_manager.login_view = "users.login"
-
+login_manager.session_protection = 'strong'
 
 ###########################
 #### BLUEPRINT CONFIGS #######

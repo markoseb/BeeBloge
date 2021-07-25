@@ -5,6 +5,7 @@ from beebloge.models import User, BlogPost,Role
 from beebloge.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from beebloge.users.picture_handler import add_pic
 from flask_admin.contrib.sqla import ModelView
+from flask_admin import AdminIndexView,expose
 from functools import wraps
 from flask_security import SQLAlchemySessionUserDatastore,current_user
 from flask_security.utils import hash_password
@@ -108,6 +109,23 @@ def user_posts(username):
 
 
 # Create a ModelView to add to our administrative interface
+class MyAdminIndexView(AdminIndexView):
+
+    @expose('/')
+    def index(self):
+        if not current_user.is_authenticated:
+            return redirect(url_for('/login'))
+        return super(MyAdminIndexView, self).index()
+
+    def is_accessible(self):
+        return (current_user.is_active and
+                current_user.is_authenticated)
+
+    def _handle_view(self, name):
+        if not self.is_accessible():
+            return login
+
+# Create a ModelView to add to our administrative interface
 class MyModelView(ModelView):
     def is_accessible(self):
         return (current_user.is_active and
@@ -118,6 +136,10 @@ class MyModelView(ModelView):
             return login
 
     column_list = ['email', 'password']
+
+
+
+
 
 def requires_roles(*roles):
     def wrapper(f):

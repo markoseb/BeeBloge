@@ -1,8 +1,10 @@
-from beebloge import db,admin,app
+from beebloge import db,app
 from beebloge.models import User
-from beebloge.users.views import MyModelView
+from beebloge.users.views import MyModelView,MyAdminIndexView
 from flask_security import Security
 from beebloge.users.views import user_datastore
+from flask_admin import Admin
 
+admin=Admin(app)
 admin.add_view(MyModelView(User,db.session))
 security =Security(app,user_datastore)
