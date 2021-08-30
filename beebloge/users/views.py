@@ -29,7 +29,7 @@ def register():
 
         db.session.commit()
 
-        flash('Thanks for registering! Now you can login!')
+        # flash('Thanks for registering! Now you can login!')
         return redirect(url_for('users.login'))
     return render_template('register.html', form=form)
 
@@ -48,7 +48,7 @@ def login():
             #Log in the user
 
             login_user(user)
-            flash('Logged in successfully.')
+            # flash('Logged in successfully.')
 
             # If a user was trying to visit a page that requires a login
             # flask saves that URL as 'next'.
@@ -87,7 +87,7 @@ def account():
             current_user.profile_image = pic
 
         db.session.commit()
-        flash('User Account Updated')
+        # flash('User Account Updated')
         return redirect(url_for('users.account'))
 
     elif request.method == 'GET':

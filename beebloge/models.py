@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(128))
     # This connects BlogPosts to a User Author.
     posts = db.relationship('BlogPost', backref='author', lazy=True)
-    comments = db.relationship('Comment', backref=db.backref('comment'), lazy=True)
+    comments = db.relationship('Comment', backref='author', lazy=True)
     active = db.Column(db.Boolean)
     confirmed_at = db.Column(db.DateTime)
     roles = db.relationship('Role', secondary=roles_users_table, backref=db.backref('users'), lazy='dynamic')
@@ -83,20 +83,19 @@ class BlogPost(db.Model):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
 
 class Comment(db.Model):
+    users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key = True)
-    users = db.relationship(User)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     body = db.Column(db.String(140))
-    author = db.Column(db.String(40))
     timestamp = db.Column(db.DateTime)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     post_id = db.Column('post_id',db.Integer, db.ForeignKey('blog_post.id'))
 
-    def __init__(self, body, post_id,user_id,author):
+    def __init__(self, body, post_id,user_id):
         self.body = body
         self.post_id = post_id
         self.user_id = user_id
-        self.author = author
 
     def __repr__(self):
         return f"Comment('{self.body}', '{self.timestamp}')"

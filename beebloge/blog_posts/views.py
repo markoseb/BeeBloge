@@ -1,4 +1,3 @@
-# <editor-fold desc="Description">
 from flask import render_template,url_for,flash, redirect,request,Blueprint
 from flask_login import login_required
 from flask_security import current_user
@@ -30,7 +29,7 @@ def create_post():
 
         db.session.add(blog_post)
         db.session.commit()
-        flash("Blog Post Created")
+        # flash("Blog Post Created")
         return redirect(url_for('core.index'))
 
     return render_template('create_post.html',form=form)
@@ -43,10 +42,10 @@ def blog_post(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(body=form.comment.data, post_id=blog_post.id,user_id=current_user.id,author=current_user.first_name)
+        comment = Comment(body=form.comment.data, post_id=blog_post.id,user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-        flash("Your comment has been added to the post", "success")
+        # flash("Your comment has been added to the post", "success")
 
     return render_template('blog_post.html',title=blog_post.title,
                             date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image,form=form
@@ -71,7 +70,7 @@ def update(blog_post_id):
         blog_post.category = form.category.data
 
         db.session.commit()
-        flash('Post Updated')
+        # flash('Post Updated')
         return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
     # Pass back the old blog post information so they can start again with
     # the old text and title.
@@ -93,22 +92,23 @@ def delete_post(blog_post_id):
         abort(403)
     db.session.delete(blog_post)
     db.session.commit()
-    flash('Post has been deleted')
+    # flash('Post has been deleted')
     return redirect(url_for('core.index'))
-# </editor-fold>
 
 
-@blog_posts.route("/<int:comment_id>/comment/delete", methods=['POST'])
+
+@blog_posts.route('/<int:blog_post_id>/delete/<int:comment_id>/', methods=[ "POST"])
 @login_required
-def delete_comment(comment_id):
+def delete_comment(blog_post_id,comment_id):
     form = CommentForm()
-
     comment = Comment.query.get_or_404(comment_id)
-    if form.user_id != current_user.id or requires_roles('admin') :
+    blog_post = BlogPost.query.get_or_404(blog_post_id)
+    if comment.author == current_user or current_user.has_role('admin'):
+        db.session.delete(comment)
+        db.session.commit()
+        # flash('Comment has been deleted')
+        return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
+    else:
         abort(403)
-    db.session.delete(comment)
-    db.session.commit()
-    flash('Comment has been deleted')
-    return redirect(url_for('blog_posts.index'))
-# </editor-fold>
+
 
