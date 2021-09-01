@@ -35,6 +35,8 @@ var initSample = ( function() {
 			editorElement.setAttribute( 'contenteditable', 'true' );
 			CKEDITOR.inline( 'editor' );
 
+
+			// without wysiwygarea the classic editor may not work.
 		}
 	};
 

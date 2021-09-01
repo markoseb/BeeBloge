@@ -17,7 +17,7 @@ users = Blueprint('users', __name__)
 def register():
     form = RegistrationForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit()  and form.check_email() and form.check_username():
 
         role = user_datastore.find_or_create_role(name='user', description='FOLLOW | COMMENT')
 
