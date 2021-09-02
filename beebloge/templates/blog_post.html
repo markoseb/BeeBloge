@@ -42,7 +42,7 @@
             <button type="submit" class="btn btn-light" style="margin: -75px 0 0 1020px"><i class="icon-delete" aria-hidden="true"></i></button>
           </form>
       {% endif %}
-      <p contenteditable="true" style="margin: -65px 0 0 0px">{{ comment.body }}</p>
+      <p type="text" readonly="readonly" />{{ comment.body }}</p>
     </div>
 
   {% endfor %}

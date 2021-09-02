@@ -89,7 +89,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.now)
     post_id = db.Column('post_id',db.Integer, db.ForeignKey('blog_post.id'))
 
     def __init__(self, body, post_id,user_id):
