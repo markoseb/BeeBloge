@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint,abort
 from flask_login import login_user, logout_user, login_required
 from beebloge import db
 from beebloge.models import User, BlogPost,Role
@@ -113,27 +113,30 @@ class MyAdminIndexView(AdminIndexView):
 
     @expose('/')
     def index(self):
-        if not current_user.is_authenticated:
+        if not current_user.is_authenticated :
             return redirect(url_for('/login'))
         return super(MyAdminIndexView, self).index()
 
     def is_accessible(self):
         return (current_user.is_active and
-                current_user.is_authenticated)
-
+                current_user.is_authenticated and  current_user.has_role('admin'))
     def _handle_view(self, name):
         if not self.is_accessible():
-            return login
+            if current_user.is_authenticated:
+                abort(403)
+            return redirect(url_for('users.login'))
 
 # Create a ModelView to add to our administrative interface
 class MyModelView(ModelView):
     def is_accessible(self):
         return (current_user.is_active and
-                current_user.is_authenticated)
+                current_user.is_authenticated and current_user.has_role('admin'))
 
     def _handle_view(self, name):
         if not self.is_accessible():
-            return login
+            if current_user.is_authenticated:
+                abort(403)
+            return redirect(url_for('users.login'))
 
     column_list = ['email', 'password']
 
