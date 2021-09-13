@@ -58,13 +58,13 @@ class Role(db.Model,RoleMixin):
 
 class BlogPost(db.Model):
     # Setup the relationship to the User table
-    users = db.relationship(User)
+    users = db.relationship(User,overlaps="author,posts")
 
     # Model for the Blog Posts on Website
     id = db.Column(db.Integer, primary_key=True)
     # Notice how we connect the BlogPost to a particular author
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    post_image = db.Column(db.String(140), nullable=False, default='/static/post_pics/blog-1.jpg')
+    post_image = db.Column(db.String(140), nullable=False, default='static/post_pics/blog-1.jpg')
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
     category = db.Column(db.String(140),nullable=False)
@@ -83,7 +83,7 @@ class BlogPost(db.Model):
         return f"Post Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
 
 class Comment(db.Model):
-    users = db.relationship(User)
+    users = db.relationship(User,overlaps="author,comments")
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)

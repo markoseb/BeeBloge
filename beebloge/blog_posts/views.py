@@ -17,18 +17,18 @@ def create_post():
     if form.validate_on_submit() :
 
         if form.picture.data:
-            imgname = "".join([form.title.data , form.category.data])
+            imgname = "".join([form.title.data[:10], form.category.data])
             pic = add_pic(form.picture.data, imgname, 'post_pics',(600,600))
 
-        blog_post = BlogPost(title=form.title.data,
+            blog_post = BlogPost(title=form.title.data,
                              text=form.text.data,
                              category=form.category.data,
                              user_id=current_user.id,
                              post_image=pic)
 
 
-        db.session.add(blog_post)
-        db.session.commit()
+            db.session.add(blog_post)
+            db.session.commit()
         # flash("Blog Post Created")
         return redirect(url_for('core.index'))
 

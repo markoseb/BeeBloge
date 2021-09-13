@@ -10,6 +10,7 @@ def add_pic(pic_upload, username_post,folder_name,pic_size=(200, 200)):
     # "mypicture.jpg"
     ext_type = filename.split('.')[-1]
     # "username.jpg"
+    username_post= ''.join([i if (ord(i) < 128 and i!=' ') else '-' for i in username_post])#delete all non asci
     storage_filename = str(username_post) + '.' + ext_type
 
     filepath = os.path.join(current_app.root_path, f'static\{folder_name}', storage_filename)
