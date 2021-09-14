@@ -29,11 +29,6 @@ app.config['SECURITY_PASSWORD_SALT'] = 'sha256'
 
 
 
-
-
-
-
-
 db = SQLAlchemy(app)
 
 
