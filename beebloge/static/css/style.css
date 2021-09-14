@@ -87,6 +87,7 @@ h1, h2, h3, h4, h5, h6, figure {
 @media screen and (max-width: 10vw) {
   .fh5co-nav .menu-1 {
     display: none;
+
   }
 }
 .fh5co-nav a {
@@ -101,6 +102,7 @@ h1, h2, h3, h4, h5, h6, figure {
   max-height: 1vw
   padding: 0;
   margin: 7px 0 0 0;
+  width: 78vw;
 }
 .fh5co-nav ul li {
   padding: 0;
@@ -236,10 +238,9 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav .fh5co-social-icons {
   text-align: right;
   width: 30%;
-  text-align: right;
-  position: fixed;
-  top: 2%;
-  right: 2%;
+  position: absolute;
+  top: 20%;
+  left: 65vw; /* icon horizontally position*/
 
 }
 @media screen and (max-width: 10vw, ) {
