@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000;
   font-family: "Cormorant Garamond", Arial, serif;
   font-weight: 400;
-  margin: 0 0 20px 0;
+  margin: 20px 0 20px 0;
 }
 
 
@@ -584,6 +584,16 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-social-icons li a i {
   font-size: 20px;
 }
+
+
+
+
+.icons-footer li a i {
+  font-size: 30px;
+  text-align:center;
+  margin-top:30px;
+
+}
 /**/
 /* =======================================================
 *
@@ -956,12 +966,18 @@ h1, h2, h3, h4, h5, h6, figure {
     margin-bottom: 30px;
   }
 }
+@media screen and (max-width: 992px) {
+  #fh5co-footer .fh5co-footer-links {
+    text-align:center;
+  }
+}
+
 #fh5co-footer .fh5co-footer-links li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-#fh5co-footer .fh5co-footer-links li a {
+#fh5co-footerrow row-pb-md .fh5co-footer-links li a {
   color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
