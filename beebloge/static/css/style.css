@@ -642,7 +642,7 @@ h1, h2, h3, h4, h5, h6, figure {
   top: 20px;
 }
 .fh5co-heading.fh5co-heading-sidebar h2 {
-  font-size: 2vw;
+  font-size: 30px;
 }
 .fh5co-heading.fh5co-heading-sidebar h2 span {
   padding: 10px 20px;
@@ -837,9 +837,17 @@ h1, h2, h3, h4, h5, h6, figure {
 
 #sidebar .side {
   margin-bottom: 6em;
-  width: 15vw;
+  width: 100%;
   float: left;
 
+}
+
+@media screen and (max-width: 992px) {
+  #sidebar .side {
+     width: 100%;
+  text-align: center;
+
+  }
 }
 #sidebar .blog-entry {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
