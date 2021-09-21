@@ -7,16 +7,15 @@ from beebloge.models import User
 from flask import flash
 class LoginForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email()])
-    password = PasswordField('Password',validators=[DataRequired()])
-    submit = SubmitField('Log In')
+    password = PasswordField('Hasło',validators=[DataRequired()])
+    submit = SubmitField('Zaloguj')
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(),Email()])
-    username = StringField('UserName',validators=[DataRequired()])
-    password = PasswordField('Password',validators=[DataRequired(),EqualTo('pass_confirm',message='Passwords must match!')])
-    pass_confirm = PasswordField('Confirm Password',validators=[DataRequired()])
+    username = StringField('Nazwa użytkownika',validators=[DataRequired()])
+    password = PasswordField('Hasło',validators=[DataRequired(),EqualTo('pass_confirm',message='Wpisano różne hasła!')])
+    pass_confirm = PasswordField('Potwierdź hasło',validators=[DataRequired()])
     submit = SubmitField('Register!')
-
     def check_email(self):
         if User.query.filter_by(email=self.email.data).first():
             flash('Ten email został już użyty!')
@@ -26,22 +25,12 @@ class RegistrationForm(FlaskForm):
 
     def check_username(self):
         if User.query.filter_by(first_name=self.username.data).first():
-            flash('Ten nick jest niedostępny! ')
+            flash('Wybrana nazwa użytkownika jest niedostępna')
             # raise ValidationError('Your username has been registered already!')
             return False
         return True
 
-class UpdateUserForm(FlaskForm):
+class UpdateUserForm(RegistrationForm):
+    picture = FileField('Załaduj obraz',validators=[FileAllowed(['jpg','png'])])
+    submit = SubmitField('Aktualizuj!')
 
-    email = StringField('Email',validators=[DataRequired(),Email()])
-    username = StringField('UserName',validators=[DataRequired()])
-    picture = FileField('Update Profile Picture',validators=[FileAllowed(['jpg','png'])])
-    submit = SubmitField('Update')
-
-    def check_email(self,field):
-        if User.query.filter_by(email=field.data).first():
-            raise ValidationError('Your email has been registered already!')
-
-    def check_username(self,field):
-        if User.query.filter_by(username=field.data).first():
-            raise ValidationError('Your username has been registered already!')

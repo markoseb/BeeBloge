@@ -24,7 +24,7 @@
     {% if current_user.is_authenticated %}
     {{ form.submit(class="btn btn-primary",style="margin: 0 0 -30px 10px;margin-bottom: 3em;") }}
     {% else %}
-      <p style="margin-bottom: 6em;">Zaloguj się i dodaj komentarz!</p>
+    <p style="margin-bottom: 6em;">Zaloguj się i dodaj komentarz!</p>
     {% endif %}
   </form>
 
@@ -33,17 +33,19 @@
   {% if post.comments.count() > 0 %}
   <h2>Komentarze</h2>
 
-<p>
+  <p>
     {% for comment in post.comments %}
-    <p >{{ comment.author.first_name  }} : {{ comment.date.strftime('%X -  %B %d, %Y') }}</p>
-    <div class="jumbotron">
-      {% if comment.author == current_user or current_user.has_role('admin') %}
-          <form action="{{ url_for('blog_posts.delete_comment',  blog_post_id=post.id , comment_id=comment.id) }}" method="POST">
-            <button type="submit" class="btn btn-light" style="margin: -75px 0 0 1020px"><i class="icon-delete" aria-hidden="true"></i></button>
-          </form>
-      {% endif %}
-      <p type="text" readonly="readonly" />{{ comment.body }}</p>
-    </div>
+  <p>{{ comment.author.first_name }} : {{ comment.date.strftime('%X - %B %d, %Y') }}</p>
+  <div class="jumbotron">
+    {% if comment.author == current_user or current_user.has_role('admin') %}
+    <form action="{{ url_for('blog_posts.delete_comment',  blog_post_id=post.id , comment_id=comment.id) }}"
+          method="POST">
+      <button type="submit" class="btn btn-light" style="margin: -75px 0 0 1020px"><i class="icon-delete"
+                                                                                      aria-hidden="true"></i></button>
+    </form>
+    {% endif %}
+    <p type="text" readonly="readonly"/>{{ comment.body }}</p>
+  </div>
 
   {% endfor %}
 
@@ -77,7 +79,6 @@
       </div>
     </div>
   </div>
-
 
 
   {% endblock content %}

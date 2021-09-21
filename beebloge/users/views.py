@@ -26,7 +26,6 @@ def register():
                                           password=hash_password(form.password.data))
 
         user_datastore.add_role_to_user(user, role)
-
         db.session.commit()
 
         # flash('Thanks for registering! Now you can login!')
@@ -48,7 +47,7 @@ def login():
             #Log in the user
 
             login_user(user)
-            # flash('Logged in successfully.')
+            flash('Jesteś zalogowany!')
 
             # If a user was trying to visit a page that requires a login
             # flask saves that URL as 'next'.
@@ -60,6 +59,9 @@ def login():
                 next = url_for('core.index')
 
             return redirect(next)
+        else:
+            flash('Błędne hasło!')
+
     return render_template('security\login_user.html', login_user_form=form)
 
 
@@ -81,13 +83,14 @@ def account():
 
         current_user.first_name = form.username.data
         current_user.email = form.email.data
-        if form.picture.data:
+        user = user_datastore.get_user(current_user.email)
+        user.password=hash_password(form.password.data)
+        if form.picture.data :
             username = current_user.first_name
             pic = add_pic(form.picture.data, username,'profile_pics',(800,800))
             current_user.profile_image = pic
-
         db.session.commit()
-        # flash('User Account Updated')
+
         return redirect(url_for('users.account'))
 
     elif request.method == 'GET':
