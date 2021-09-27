@@ -1,6 +1,9 @@
 # [BeeBloge](https://github.com/markoseb/BeeBloge) -work in progress
-Repositoy for blog projects in Poland
 
+#Repositoy for blog projects in Poland
+Click below link to see Blog in action!
+
+[Blog page address](https://roztanczonapszczolka.pl/)
 
 
 ## Download and Installation
