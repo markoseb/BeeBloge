@@ -11,9 +11,38 @@ body {
   line-height: 1.7;
   color: #828282;
 }
+@media screen and (max-width: 480px ) {
+  body {
+    font-size: 3vw;
+  }
+}
 
-
-
+#page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.offcanvas #page {
+  overflow: hidden;
+  position: absolute;
+}
+.offcanvas #page:after {
+  -webkit-transition: 2s;
+  -o-transition: 2s;
+  transition: 2s;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 101;
+  background: rgba(0, 0, 0, 0.7);
+  content: "";
+}
 
 
 a {
@@ -40,6 +69,20 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 20px 0 20px 0;
 }
 
+::-webkit-selection {
+  color: #fff;
+  background: #1d2f3b;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #1d2f3b;
+}
+
+::selection {
+  color: #fff;
+  background: #1d2f3b;
+}
 
 
 .fh5co-nav .top-menu {
@@ -95,6 +138,8 @@ h1, h2, h3, h4, h5, h6, figure {
   color: #000;
 }
 
+
+
 .fh5co-nav .menu-2 {
   padding: 2em 0;
 }
@@ -122,6 +167,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-nav ul li a:hover, .fh5co-nav ul li a:focus, .fh5co-nav ul li a:active {
   color: black;
+
 }
 
 
@@ -240,27 +286,36 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 30%;
   position: absolute;
   top: 20%;
-  left: 65vw; /* icon horizontally position*/
+  margin-left:130%;
 
 }
-@media screen and (max-width: 10vw, ) {
-  .fh5co-nav .fh5co-social-icons {
-    text-align: left;
 
-  }
-}
 .fh5co-nav .fh5co-social-icons li a {
   padding: inherit;
   padding-left: 5px;
   padding-right: 5px;
 
 }
+
 .fh5co-nav .fh5co-social-icons li a i {
   font-size: 20px;
   color: #000;
-
-
 }
+
+@media screen and (max-width: 768px) {
+  .fh5co-nav .fh5co-social-icons {
+    text-align: left;
+    margin-left: 75%;
+  }
+}
+@media screen and (max-width: 480px ) {
+  .fh5co-nav .fh5co-social-icons li a i{
+    font-size: 15px;
+  }
+}
+
+
+
 
 #fh5co-counter,
 .fh5co-bg,
