@@ -19,12 +19,12 @@
 
   <form class="form-group row" method="POST" action="">
     {{ form.hidden_tag() }}
-    {{form.comment.label(style="float: right; width: 1160px")}}
-    {{form.comment(class="new-comment",style="margin: 0 0 -30px 10px;margin-bottom: 1em;")}}
+    {{form.comment.label(style="margin-left: 1vw")}}
+    {{form.comment(class="new-comment",style="margin-left: 1vw;margin-bottom: 1em;width: 98%")}}
     {% if current_user.is_authenticated %}
-    {{ form.submit(class="btn btn-primary",style="margin: 0 0 -30px 10px;margin-bottom: 3em;") }}
+    {{ form.submit(class="btn btn-primary",style="margin-left: 1vw;margin-bottom: 3em;") }}
     {% else %}
-    <p style="margin-bottom: 6em;">Zaloguj się i dodaj komentarz!</p>
+    <p style="margin-left: 1vw;margin-bottom: 6em;">Zaloguj się i dodaj komentarz!</p>
     {% endif %}
   </form>
 
