@@ -68,6 +68,7 @@
 										{% endif %}
 
 
+
 									</ul>
 								</div>
 										<div class="col-sm-5">
@@ -102,7 +103,7 @@
 
 
 		<footer id="fh5co-footer" role="contentinfo">
-			<div class="container">
+
 				<p>
 
 
@@ -110,7 +111,15 @@
 
 				<div class="row row-pb-md">
 
-					<div class="col-md-4 col-md-push-1">
+					<div class="col-md-3 col-md-push-1">
+						<ul class="fh5co-footer-links">
+
+							<li><a href="{{ url_for('core.index') }}"><img src="static/header logo.png"></a></li>
+							<li><h1 href="{{ url_for('core.index') }}">Roztańczona Pszczółka</h1></li>
+						</ul>
+					</div>
+
+					<div class="col-md-3 col-md-push-1">
 
 						<ul class="fh5co-footer-links">
 							<li><h4>Links</h4></li>
@@ -121,7 +130,7 @@
 						</ul>
 					</div>
 
-					<div class="col-md-4 col-md-push-1">
+					<div class="col-md-3 col-md-push-1">
 
 						<ul class="fh5co-footer-links">
 							<li><h4>Kontakt</h4></li>
@@ -130,11 +139,13 @@
 							<li><a href="">Web site</a></li>
 						</ul>
 					</div>
-					<div class="col-md-4 col-md-push-1">
-						<div class="fh5co-social-icons icons-footer" style="text-align:center; margin-top:30px;">
-							<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
-							<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
-						</div>
+					<div class="col-md-3 col-md-push-1">
+						<ul class="fh5co-footer-links">
+							<div class="fh5co-social-icons icons-footer" >
+								<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
+								<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
+							</div>
+						</ul>
 					</div>
 
 				</div>
@@ -152,7 +163,7 @@
 					</div>
 				</div>
 
-			</div>
+
 		</footer>
 
 	</div>

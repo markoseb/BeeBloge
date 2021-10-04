@@ -989,13 +989,30 @@ h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
   list-style: none;
 }
-#fh5co-footerrow row-pb-md .fh5co-footer-links li a {
+#fh5co-footer .fh5co-footer-links img {
+  width: 100px;
+  height: 80px;
+  margin: 0px 0 -15px 1.5vw;
+  }
+
+#fh5co-footer .fh5co-footer-links h1 {
+  margin-left: 0.1vw;
+  margin-top: 0px;
+  font-size: 18px;
+  color: inherit;
+  font-family: inherit;
+  font-weight: 590;
+  line-height: 2.1;
+
+}
+#fh5co-footerrow row-pb-md .fh5co-footer-links li a img {
   color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
 }
-#fh5co-footer .fh5co-footer-links li a:hover {
+#fh5co-footer .fh5co-footer-links li a:hover img:hover{
   text-decoration: underline;
 }
+
 #fh5co-footer .fh5co-widget {
   margin-bottom: 30px;
 }
@@ -1011,6 +1028,7 @@ h1, h2, h3, h4, h5, h6, figure {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 #fh5co-footer .copyright .block {
   display: block;
 }
