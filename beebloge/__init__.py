@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, Response,send_from_directory,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -66,3 +66,13 @@ app.register_blueprint(error_pages)
 
 
 
+@app.route('/robots.txt')
+def robots():
+    r = Response(response="User-Agent: *\nDisallow: /*.sqlite$\nSitemap: https://roztanczonapszczolka.pl/sitemap.xml\n", status=200, mimetype="text/plain")
+    r.headers["Content-Type"] = "text/plain; charset=utf-8"
+    return r
+
+
+@app.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(app.static_folder, request.path[1:])
