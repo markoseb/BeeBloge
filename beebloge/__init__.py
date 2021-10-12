@@ -69,6 +69,7 @@ def redirect_nonwww():
     if urlparts.netloc == 'roztanczonapszczolka.pl':
         urlparts_list = list(urlparts)
         urlparts_list[1] = "www.roztanczonapszczolka.pl"
+        urlparts_list[0] = "https"
         return redirect(urlunparse(urlparts_list), code=301)
 
 
