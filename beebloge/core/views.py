@@ -1,7 +1,16 @@
-from flask import render_template,request,Blueprint
+from flask import render_template,request,Blueprint,redirect
 from beebloge.models import BlogPost
 
 core = Blueprint('core',__name__)
+
+
+
+
+@core.route('/index')
+def indexRedirect():
+  return redirect('/')
+
+
 
 @core.route('/')
 def index():
@@ -13,9 +22,25 @@ def index():
     blog_posts = BlogPost.query.order_by(BlogPost.date.desc()).paginate(page=page, per_page=10)
     return render_template('index.html',blog_posts=blog_posts)
 
+
+
+
 @core.route('/info')
 def info():
     '''
     Example view of any other "core" page.
     '''
     return render_template('info.html')
+
+
+
+
+
+
+
+
+
+
+
+
+

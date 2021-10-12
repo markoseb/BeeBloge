@@ -1,10 +1,11 @@
 import os
-from flask import Flask, Response,send_from_directory,request
+from flask import Flask, Response, send_from_directory, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
+from urllib.parse import urlparse, urlunparse
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -24,16 +25,12 @@ app.config['SECRET_KEY'] = 'mysecret'
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECURITY_PASSWORD_HASH'] ='sha512_crypt'
+app.config['SECURITY_PASSWORD_HASH'] = 'sha512_crypt'
 app.config['SECURITY_PASSWORD_SALT'] = 'sha256'
-
-
 
 db = SQLAlchemy(app)
 
-
-Migrate(app,db)
-
+Migrate(app, db)
 
 ###########################
 #### LOGIN CONFIGS #######
@@ -65,10 +62,20 @@ app.register_blueprint(core)
 app.register_blueprint(error_pages)
 
 
+@app.before_request
+def redirect_nonwww():
+    """Redirect non-www requests to www."""
+    urlparts = urlparse(request.url)
+    if urlparts.netloc == 'roztanczonapszczolka.pl':
+        urlparts_list = list(urlparts)
+        urlparts_list[1] = "www.roztanczonapszczolka.pl"
+        return redirect(urlunparse(urlparts_list), code=301)
+
 
 @app.route('/robots.txt')
 def robots():
-    r = Response(response="User-Agent: *\nDisallow: /*.sqlite$\nSitemap: https://roztanczonapszczolka.pl/sitemap.xml\n", status=200, mimetype="text/plain")
+    r = Response(response="User-Agent: *\nDisallow: /*.sqlite$\nSitemap: https://roztanczonapszczolka.pl/sitemap.xml\n",
+                 status=200, mimetype="text/plain")
     r.headers["Content-Type"] = "text/plain; charset=utf-8"
     return r
 
@@ -76,3 +83,20 @@ def robots():
 @app.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(app.static_folder, request.path[1:])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
