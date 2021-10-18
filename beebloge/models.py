@@ -90,12 +90,39 @@ class Comment(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime)
     date = db.Column(db.DateTime, nullable=False, default=datetime.now)
-    post_id = db.Column('post_id',db.Integer, db.ForeignKey('blog_post.id'))
+    post_id = db.Column('post_id',db.Integer, db.ForeignKey('blog_post.id'),nullable=True)
+    product_id = db.Column('product_id',db.Integer, db.ForeignKey('product.id'),nullable=True)
 
-    def __init__(self, body, post_id,user_id):
+    def __init__(self, body, post_id,user_id,product_id):
         self.body = body
         self.post_id = post_id
+        self.product_id = product_id
         self.user_id = user_id
 
     def __repr__(self):
         return f"Comment('{self.body}', '{self.timestamp}')"
+
+
+class Product(db.Model):
+    # Setup the relationship to the User table
+    users = db.relationship(User, overlaps="author,products")
+    # Model for the Product on Website
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    product_image = db.Column(db.String(140), nullable=False, default='static/product_pics/blog-1.jpg')
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    title = db.Column(db.String(140), nullable=False)
+    category = db.Column(db.String(140),nullable=False)
+    text = db.Column(db.Text, nullable=False)
+    comments = db.relationship('Comment', backref=db.backref('product'), lazy='dynamic')
+
+    def __init__(self, title, text, post_image,user_id,category="Category" ):
+        self.title = title
+        self.text = text
+        self.category = category
+        self.post_image=post_image
+        self.user_id = user_id
+
+
+    def __repr__(self):
+        return f"Product Id: {self.id} --- Date: {self.date} --- Title: {self.title}"

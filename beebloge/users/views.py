@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint,abort
 from flask_login import login_user, logout_user, login_required
 from beebloge import db
-from beebloge.models import User, BlogPost,Role
+from beebloge.models import User, BlogPost,Product,Role
 from beebloge.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from beebloge.users.picture_handler import add_pic
 from flask_admin.contrib.sqla import ModelView
@@ -110,6 +110,14 @@ def user_posts(username):
     return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
 # </editor-fold>
 
+
+@users.route("/<username>")
+def user_products(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(first_name=username).first_or_404()
+    products = Product.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
+    return render_template('user_products.html', products=products, user=user)
+# </editor-fold>
 
 # Create a ModelView to add to our administrative interface
 class MyAdminIndexView(AdminIndexView):

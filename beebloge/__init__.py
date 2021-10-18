@@ -54,13 +54,16 @@ from beebloge.core.views import core
 from beebloge.users.views import users
 from beebloge.blog_posts.views import blog_posts
 from beebloge.error_pages.handlers import error_pages
+from beebloge.comments.views import comments
+from beebloge.products.views import products
 
 # Register the apps
 app.register_blueprint(users)
 app.register_blueprint(blog_posts)
 app.register_blueprint(core)
 app.register_blueprint(error_pages)
-
+app.register_blueprint(comments)
+app.register_blueprint(products)
 
 @app.before_request
 def redirect_nonwww():

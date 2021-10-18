@@ -5,7 +5,8 @@ from beebloge import db
 from beebloge.models import BlogPost,Comment
 from beebloge.users.picture_handler import add_pic
 from beebloge.users.views import requires_roles
-from beebloge.blog_posts.forms import BlogPostForm,CommentForm
+from beebloge.blog_posts.forms import BlogPostForm
+from beebloge.comments.forms import CommentForm
 blog_posts = Blueprint('blog_posts',__name__)
 
 @blog_posts.route('/create',methods=['GET','POST'])
@@ -14,7 +15,7 @@ blog_posts = Blueprint('blog_posts',__name__)
 def create_post():
     form = BlogPostForm()
 
-    if form.validate_on_submit() :
+    if form.validate_on_submit():
 
         if form.picture.data:
             imgname = "".join([form.title.data[:10], form.category.data])
@@ -45,7 +46,7 @@ def blog_post(blog_post_id):
         comment = Comment(body=form.comment.data, post_id=blog_post.id,user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
-        # flash("Your comment has been added to the post", "success")
+        # flash("Your comments has been added to the post", "success")
 
     return render_template('blog_post.html',title=blog_post.title,
                             date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image,form=form
@@ -97,18 +98,6 @@ def delete_post(blog_post_id):
 
 
 
-@blog_posts.route('/<int:blog_post_id>/delete/<int:comment_id>/', methods=[ "POST"])
-@login_required
-def delete_comment(blog_post_id,comment_id):
-    form = CommentForm()
-    comment = Comment.query.get_or_404(comment_id)
-    blog_post = BlogPost.query.get_or_404(blog_post_id)
-    if comment.author == current_user or current_user.has_role('admin'):
-        db.session.delete(comment)
-        db.session.commit()
-        # flash('Comment has been deleted')
-        return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
-    else:
-        abort(403)
+
 
 
