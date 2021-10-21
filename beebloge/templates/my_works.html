@@ -13,10 +13,8 @@
 
 			<div class="row">
 
-
 				<div class="col-md-9 col-padded-right">
 					<div class="row">
-
 
 						{# Go through each products #}
 						{% for product in products.items %}
@@ -38,9 +36,9 @@
 										alt="static/product_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
 									<p>{{ post.text[:500]|safe }}...</p>
-									<a href="{{ url_for('users.user_products', username=product.author.username) }}">Autor: {{
+									<a href="{{ url_for('users.user_products', username=product.author.username) }}">Autor:
+										{{
 										product.author.first_name }}</a>
-
 								</div>
 							</div>
 						</div>
@@ -62,18 +60,14 @@
 										alt="static/product_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
 									<p>{{ product.text[:500]|safe }}...</p>
-									<a href="{{ url_for('users.user_products', username=product.author.username) }}">Autor: {{
-										product.author.first_name }}</a>
-
+									<a href="{{ url_for('users.user_products', username=product.author.username) }}">
+										Autor : {{ product.author.first_name }}</a>
 								</div>
 							</div>
 						</div>
 						{% endif %}
 						{% endfor %}
-
-
 					</div>
-
 				</div>
 
 
@@ -97,13 +91,10 @@
 									<li><a href="https://www.instagram.com/maria_muszka/"><i
 											class="icon-instagram-with-circle"></i></a></li>
 								</ul>
-
 							</div>
 						</div>
 					</div>
 				</aside>
-
-
 			</div>
 		</div>
 

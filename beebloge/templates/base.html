@@ -1,4 +1,4 @@
-<!--<editor-fold desc="Description">-->
+
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -54,16 +54,17 @@
 					<div class="top-menu">
 						<div class="container">
 							<div class="row">
-								<div class="col-sm-7 text-left menu-1" >
+								<div class="col-sm-9 text-left menu-1" >
 									<ul>
 										<li class="active"><a href="{{ url_for('core.index') }}">Strona główna</a></li>
+										<li><a href="{{ url_for('products.products_list') }}">Rękodzieło</a></li>
 										<li><a href="{{ url_for('core.info') }}">O mnie</a></li>
 										{% if current_user.is_authenticated %}
 										<li><a href="{{ url_for('users.logout') }}">Wyloguj się</a></li>
 										<li><a href="{{ url_for('users.account') }}">Konto</a></li>
 										{% if current_user.has_role('admin') %}
 										<li><a href="{{ url_for('blog_posts.create_post') }}">Utwórz post</a></li>
-										<li><a href="{{ url_for('products.products_list') }}">Rękodzieło</a></li>
+										<li><a href="{{ url_for('products.create_product') }}">Nowy Produkt</a></li>
 										{% endif %}
 										{% else %}
 										<li><a href="{{ url_for('users.login') }}">Zaloguj się</a></li>
@@ -74,7 +75,7 @@
 
 									</ul>
 								</div>
-										<div class="col-sm-5">
+										<div class="col-sm-3">
 											<div class="fh5co-social-icons">
 												<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
 												<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
@@ -192,5 +193,5 @@
 	<script src="/static/js/main.js"></script>
 	</body>
 	</html>
-<!--</editor-fold>-->
+
 
