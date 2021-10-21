@@ -44,7 +44,7 @@ def product(product_id):
     product = Product.query.get_or_404(product_id)
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(body=form.comment.data, post_id=product.id,user_id=current_user.id)
+        comment = Comment(body=form.comment.data,post_id='', product_id=product.id,user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
         # flash("Your comments has been added to the post", "success")

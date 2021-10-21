@@ -21,7 +21,7 @@ def delete_comment(product_id,blog_post_id,comment_id):
             return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
         if product_id:
             product = Product.query.get_or_404(blog_post_id)
-            return redirect(url_for('products.products', product_id=product.id))
+            return redirect(url_for('products.product', product_id=product.id))
     else:
         abort(403)
 
