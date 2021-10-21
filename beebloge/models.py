@@ -29,6 +29,7 @@ class User(db.Model, UserMixin):
     # This connects BlogPosts to a User Author.
     posts = db.relationship('BlogPost', backref='author', lazy=True)
     comments = db.relationship('Comment', backref='author', lazy=True)
+    products = db.relationship('Product', backref='author', lazy=True)
     active = db.Column(db.Boolean)
     confirmed_at = db.Column(db.DateTime)
     roles = db.relationship('Role', secondary=roles_users_table, backref=db.backref('users'), lazy='dynamic')
