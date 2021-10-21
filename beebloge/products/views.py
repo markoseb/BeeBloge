@@ -26,7 +26,7 @@ def create_product():
                              text=form.text.data,
                              category=form.category.data,
                              user_id=current_user.id,
-                             post_image=pic)
+                             product_image=pic)
 
 
             db.session.add(product)
@@ -38,7 +38,7 @@ def create_product():
 
 
 
-@products.route('/<int:product_id>', methods=["GET", "POST"])
+@products.route('/product/<int:product_id>', methods=["GET", "POST"])
 def product(product_id):
     # grab the requested blog post by id number or return 404
     product = Product.query.get_or_404(product_id)
@@ -49,8 +49,8 @@ def product(product_id):
         db.session.commit()
         # flash("Your comments has been added to the post", "success")
 
-    return render_template('products.html',title=product.title,
-                            date=product.date,product=product,category=product.category,product_image=product.post_image,form=form
+    return render_template('product.html',title=product.title,
+                            date=product.date,product=product,category=product.category,product_image=product.product_image,form=form
     )
 
 @products.route("/<int:product_id>/update", methods=['GET', 'POST'])
@@ -86,7 +86,7 @@ def update(product_id):
                            form=form)
 
 
-@products.route("/<int:product_id>/delete", methods=['POST'])
+@products.route("/delete/product/<int:product_id>/", methods=['POST'])
 @login_required
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
@@ -107,7 +107,7 @@ def products_list():
     '''
     page = request.args.get('page', 1, type=int)
     products = Product.query.order_by(Product.date.desc()).paginate(page=page, per_page=10)
-    return render_template('my_works.html',products=products)
+    return render_template('productList.html',products=products)
 
 
 

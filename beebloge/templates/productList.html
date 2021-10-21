@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+	{% block content %}
+
+
+	<div id="fh5co-content" class="fh5co-no-pd-top">
+		<div class="container">
+
+			<div class="row animate-box">
+				<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+					<h2><span>Moje Inspiracje</span></h2>
+				</div>
+			</div>
+
+			<div class="row">
+
+
+				<div class="col-md-9 col-padded-right">
+					<div class="row">
+
+						{# Go through each blog post #}
+						{% for product in products.items %}
+
+						<div class="col-md-6">
+							<div class="fh5co-blog animate-box">
+								<div class="title title-pin text-center">
+									<span class="posted-on">Opublikowane: {{ product.date.strftime('%Y-%m-%d') }}</span>
+									<h3><a href="  {{ url_for('products.product', product_id=product.id) }}">{{
+										product.title }}</a></h3>
+									<span class="category">{{
+										product.category }}</span>
+								</div>
+								<a href="  {{ url_for('products.product', product_id=product.id) }}"><img
+										class="img-responsive"
+										src="{{ url_for('static', filename='product_pics/' + product.product_image) }}"
+										alt="static/product_pics/blog-1.jpg"></a>
+								<div class="blog-text text-center">
+									<p>{{ product.text[:500]|safe }}...</p>
+									<a href="{{ url_for('users.user_posts', username=product.author.username) }}">Autor: {{
+										product.author.first_name }}</a>
+
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+
+					</div>
+
+				</div>
+
+
+				<aside id="sidebar">
+					<div class="col-md-3">
+						<div class="side animate-box">
+							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+								<h2><span>O Mnie</span></h2>
+							</div>
+							<div class="fh5co-staff">
+								<img src="static/profile_pics/Maria.jpg">
+								<h3>Maria Mucha</h3>
+								<strong class="role">Założycielka bloga</strong>
+								<p href="{{ url_for('core.info') }}">Mam na imię Maria i jestem studentką Technologii
+									Chemicznej na PW. Moją największą pasją jest wspinaczka i od jakiegoś czasu wszystko
+									co jest związane z pszczołami, stąd pomysł na stworzenie tego bloga. :)</p>
+
+								<ul class="fh5co-social-icons">
+									<li><a href="https://www.facebook.com/maria.wiedenska5"><i
+											class="icon-facebook-with-circle"></i></a></li>
+									<li><a href="https://www.instagram.com/maria_muszka/"><i
+											class="icon-instagram-with-circle"></i></a></li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</aside>
+
+
+			</div>
+		</div>
+
+	</div>
+
+
+	{% endblock %}

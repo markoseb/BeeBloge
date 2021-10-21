@@ -117,11 +117,11 @@ class Product(db.Model):
     text = db.Column(db.Text, nullable=False)
     comments = db.relationship('Comment', backref=db.backref('product'), lazy='dynamic')
 
-    def __init__(self, title, text, post_image,user_id,category="Category" ):
+    def __init__(self, title, text, product_image,user_id,category="Category" ):
         self.title = title
         self.text = text
         self.category = category
-        self.post_image=post_image
+        self.product_image=product_image
         self.user_id = user_id
 
 
