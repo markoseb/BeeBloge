@@ -33,7 +33,7 @@ def create_post():
         # flash("Blog Post Created")
         return redirect(url_for('core.index'))
 
-    return render_template('create_post.html',form=form)
+    return render_template('createPost.html',form=form)
 
 
 
@@ -43,12 +43,12 @@ def blog_post(blog_post_id):
     blog_post = BlogPost.query.get_or_404(blog_post_id)
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(body=form.comment.data, post_id=blog_post.id,user_id=current_user.id)
+        comment = Comment(body=form.comment.data,product_id=None, post_id=blog_post.id,user_id=current_user.id)
         db.session.add(comment)
         db.session.commit()
         # flash("Your comments has been added to the post", "success")
 
-    return render_template('blog_post.html',title=blog_post.title,
+    return render_template('blogPost.html',title=blog_post.title,
                             date=blog_post.date,post=blog_post,category=blog_post.category,post_image=blog_post.post_image,form=form
     )
 
@@ -81,7 +81,7 @@ def update(blog_post_id):
         form.category.data = blog_post.category
         form.picture.data =blog_post.post_image
 
-    return render_template('create_post.html', title='Update',
+    return render_template('createPost.html', title='Update',
                            form=form)
 
 

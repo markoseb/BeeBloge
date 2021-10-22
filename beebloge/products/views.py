@@ -34,7 +34,7 @@ def create_product():
         # flash("Blog Post Created")
         return redirect(url_for('core.index'))
 
-    return render_template('add_product.html',form=form)
+    return render_template('addProduct.html',form=form)
 
 
 
@@ -82,7 +82,7 @@ def update(product_id):
         form.category.data = product.category
         form.picture.data =product.post_image
 
-    return render_template('add_product.html', title='Update',
+    return render_template('addProduct.html', title='Update',
                            form=form)
 
 
