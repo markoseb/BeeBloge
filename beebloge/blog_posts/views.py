@@ -9,7 +9,7 @@ from beebloge.blog_posts.forms import BlogPostForm
 from beebloge.comments.forms import CommentForm
 blog_posts = Blueprint('blog_posts',__name__)
 
-@blog_posts.route('/create',methods=['GET','POST'])
+@blog_posts.route('/create', methods=['GET','POST'])
 @login_required
 @requires_roles('admin')
 def create_post():
@@ -33,7 +33,7 @@ def create_post():
         # flash("Blog Post Created")
         return redirect(url_for('core.index'))
 
-    return render_template('createPost.html',form=form)
+    return render_template('addPost.html',form=form)
 
 
 
@@ -81,7 +81,7 @@ def update(blog_post_id):
         form.category.data = blog_post.category
         form.picture.data =blog_post.post_image
 
-    return render_template('createPost.html', title='Update',
+    return render_template('addPost.html', title='Update',
                            form=form)
 
 

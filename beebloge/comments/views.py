@@ -1,4 +1,4 @@
-from flask import url_for,redirect,Blueprint,abort
+from flask import url_for,redirect,Blueprint
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db

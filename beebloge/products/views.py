@@ -1,4 +1,4 @@
-from flask import render_template,url_for, redirect,request,Blueprint,abort
+from flask import render_template,url_for, redirect,request,Blueprint
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db
@@ -10,7 +10,7 @@ from beebloge.comments.forms import CommentForm
 
 products = Blueprint('products', __name__)
 
-@products.route('/create/myworks', methods=['GET', 'POST'])
+@products.route('/createProduct', methods=['GET', 'POST'])
 @login_required
 @requires_roles('admin')
 def create_product():
@@ -99,7 +99,7 @@ def delete_product(product_id):
 
 
 
-@products.route('/mywork')
+@products.route('/products')
 def products_list():
     '''
     This is the home page view. Use pagination to show a limited

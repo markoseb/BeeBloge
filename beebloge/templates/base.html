@@ -63,7 +63,7 @@
 										<li><a href="{{ url_for('users.logout') }}">Wyloguj się</a></li>
 										<li><a href="{{ url_for('users.account') }}">Konto</a></li>
 										{% if current_user.has_role('admin') %}
-										<li><a href="{{ url_for('blog_posts.create_post') }}">Utwórz post</a></li>
+										<li><a href="{{ url_for('blog_posts.create_post') }}">Nowy Post</a></li>
 										<li><a href="{{ url_for('products.create_product') }}">Nowy Produkt</a></li>
 										{% endif %}
 										{% else %}
