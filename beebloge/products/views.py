@@ -1,4 +1,4 @@
-from flask import render_template,url_for, redirect,request,Blueprint
+from flask import render_template,url_for, redirect,request,Blueprint,abort
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db
@@ -53,7 +53,7 @@ def product(product_id):
                             date=product.date,product=product,category=product.category,product_image=product.product_image,form=form
     )
 
-@products.route("/<int:product_id>/update", methods=['GET', 'POST'])
+@products.route("/product/<int:product_id>/update", methods=['GET', 'POST'])
 @login_required
 def update(product_id):
     product = Product.query.get_or_404(product_id)
@@ -80,7 +80,7 @@ def update(product_id):
         form.title.data = product.title
         form.text.data = product.text
         form.category.data = product.category
-        form.picture.data =product.post_image
+        form.picture.data =product.product_image
 
     return render_template('addProduct.html', title='Update',
                            form=form)
