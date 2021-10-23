@@ -96,7 +96,7 @@ def delete_product(product_id):
     db.session.delete(product)
     db.session.commit()
     # flash('Post has been deleted')
-    return redirect(url_for('core.index'))
+    return redirect(url_for('products.products_list'))
 
 
 
