@@ -10,7 +10,9 @@ from beebloge.comments.forms import CommentForm
 
 products = Blueprint('products', __name__)
 
-@products.route('/createProduct', methods=['GET', 'POST'])
+
+
+@products.route('/create/product', methods=['GET', 'POST'])
 @login_required
 @requires_roles('admin')
 def create_product():
@@ -38,7 +40,7 @@ def create_product():
 
 
 
-@products.route('/product/<int:product_id>', methods=["GET", "POST"])
+@products.route('/product/<int:product_id>' , strict_slashes=False, methods=["GET", "POST"])
 def product(product_id):
     # grab the requested blog post by id number or return 404
     product = Product.query.get_or_404(product_id)
@@ -50,10 +52,9 @@ def product(product_id):
         # flash("Your comments has been added to the post", "success")
 
     return render_template('product.html',title=product.title,
-                            date=product.date,product=product,category=product.category,product_image=product.product_image,form=form
-    )
+                            date=product.date,product=product,category=product.category,product_image=product.product_image,form=form)
 
-@products.route("/product/<int:product_id>/update", methods=['GET', 'POST'])
+@products.route('/product/<int:product_id>/update', methods=['GET', 'POST'])
 @login_required
 def update(product_id):
     product = Product.query.get_or_404(product_id)
@@ -86,7 +87,7 @@ def update(product_id):
                            form=form)
 
 
-@products.route("/delete/product/<int:product_id>/", methods=['POST'])
+@products.route('/product/<int:product_id>/delete', methods=['POST'])
 @login_required
 def delete_product(product_id):
     product = Product.query.get_or_404(product_id)
@@ -99,7 +100,7 @@ def delete_product(product_id):
 
 
 
-@products.route('/products')
+@products.route('/product/list')
 def products_list():
     '''
     This is the home page view. Use pagination to show a limited

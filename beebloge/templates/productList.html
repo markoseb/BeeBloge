@@ -32,7 +32,7 @@
 								<a href="  {{ url_for('products.product', product_id=product.id) }}"><img
 										class="img-responsive"
 										src="{{ url_for('static', filename='product_pics/' + product.product_image) }}"
-										alt="static/product_pics/blog-1.jpg"></a>
+										alt="/static/product_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
 									<p>{{ product.text[:500]|safe }}...</p>
 									<a href="{{ url_for('users.user_posts', username=product.author.username) }}">Autor: {{
@@ -57,7 +57,7 @@
 								<h2><span>O Mnie</span></h2>
 							</div>
 							<div class="fh5co-staff">
-								<img src="static/profile_pics/Maria.jpg">
+								<img src="/static/profile_pics/Maria.jpg">
 								<h3>Maria Mucha</h3>
 								<strong class="role">Założycielka bloga</strong>
 								<p href="{{ url_for('core.info') }}">Mam na imię Maria i jestem studentką Technologii

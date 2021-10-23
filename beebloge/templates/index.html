@@ -27,15 +27,15 @@
 							<div class="fh5co-blog animate-box">
 								<div class="title title-pin text-center">
 									<span class="posted-on">Opublikowane: {{ post.date.strftime('%Y-%m-%d') }}</span>
-									<h3><a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{
+									<h3><a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}">{{
 										post.title }}</a></h3>
 									<span class="category">{{
 										post.category }}</span>
 								</div>
-								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img
+								<a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}"><img
 										class="img-responsive"
 										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
-										alt="static/post_pics/blog-1.jpg"></a>
+										alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
 									<p>{{ post.text[:500]|safe }}...</p>
 									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
@@ -51,15 +51,15 @@
 							<div class="fh5co-blog animate-box">
 								<div class="title title-pin text-center">
 									<span class="posted-on">Opublikowane: {{ post.date.strftime('%Y-%m-%d') }}</span>
-									<h3><a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{
+									<h3><a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}">{{
 										post.title }}</a></h3>
 									<span class="category">{{
 										post.category }}</span>
 								</div>
-								<a href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}"><img
+								<a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}"><img
 										class="img-responsive"
 										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
-										alt="static/post_pics/blog-1.jpg"></a>
+										alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
 									<p>{{ post.text[:500]|safe }}...</p>
 									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
@@ -84,7 +84,7 @@
 								<h2><span>O Mnie</span></h2>
 							</div>
 							<div class="fh5co-staff">
-								<img src="static/profile_pics/Maria.jpg">
+								<img src="/static/profile_pics/Maria.jpg">
 								<h3>Maria Mucha</h3>
 								<strong class="role">Założycielka bloga</strong>
 								<p href="{{ url_for('core.info') }}">Mam na imię Maria i jestem studentką Technologii

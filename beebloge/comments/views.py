@@ -7,7 +7,7 @@ from beebloge.models import BlogPost,Comment,Product
 comments = Blueprint('comments',__name__)
 
 
-@comments.route('/<int:postProductId>/delete/<int:comment_id>/', methods=[ "POST"])
+@comments.route('/comment/<int:comment_id>/<int:postProductId>/delete', methods=[ "POST"])
 @login_required
 def delete_comment(postProductId,comment_id):
     comment = Comment.query.get_or_404(comment_id)
@@ -18,7 +18,7 @@ def delete_comment(postProductId,comment_id):
         # flash('Comment has been deleted')
         if comment.post_id:
             blog_post = BlogPost.query.get_or_404(postProductId)
-            return redirect(url_for('blog_posts.blog_post', blog_post_id=blog_post.id))
+            return redirect(url_for('blogPosts.blog_post', blog_post_id=blog_post.id))
         if comment.product_id:
             product = Product.query.get_or_404(postProductId)
             return redirect(url_for('products.product', product_id=product.id))

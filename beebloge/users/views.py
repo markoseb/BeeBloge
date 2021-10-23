@@ -67,13 +67,13 @@ def login():
 
 
 
-@users.route("/logout")
+@users.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('core.index'))
 
 
-@users.route("/account", methods=['GET', 'POST'])
+@users.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
 
@@ -102,7 +102,7 @@ def account():
     return render_template('account.html', profile_image=profile_image, form=form)
 
 
-@users.route("/<username>")
+@users.route('/<username>')
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(first_name=username).first_or_404()
@@ -111,7 +111,7 @@ def user_posts(username):
 # </editor-fold>
 
 
-@users.route("/<username>")
+@users.route('/<username>')
 def user_products(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(first_name=username).first_or_404()

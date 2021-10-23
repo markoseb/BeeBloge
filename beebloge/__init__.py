@@ -52,7 +52,7 @@ login_manager.session_protection = 'strong'
 
 from beebloge.core.views import core
 from beebloge.users.views import users
-from beebloge.blog_posts.views import blog_posts
+from beebloge.blogPosts.views import blog_posts
 from beebloge.error_pages.handlers import error_pages
 from beebloge.comments.views import comments
 from beebloge.products.views import products
