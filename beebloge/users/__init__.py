@@ -1,5 +1,6 @@
 from beebloge import db,app
-from beebloge.models import User,Role
+
+from beebloge.models import User
 from beebloge.users.views import MyModelView,MyAdminIndexView
 from flask_security import Security
 from beebloge.users.views import user_datastore

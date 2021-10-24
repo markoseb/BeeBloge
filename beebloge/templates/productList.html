@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 	{% block content %}
 
+
 	<div id="fh5co-content" class="fh5co-no-pd-top">
 		<div class="container">
 
 			<div class="row animate-box">
 				<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
-					<h2><span>Mój blog</span></h2>
+					<h2><span>Rękodzieła</span></h2>
 				</div>
 			</div>
 
@@ -16,58 +17,31 @@
 				<div class="col-md-9 col-padded-right">
 					<div class="row">
 
-
 						{# Go through each blog post #}
-						{% for post in blog_posts.items %}
+						{% for product in products.items %}
 
-						{% if loop.first %}
-
-						<div class="col-md-12">
+						<div class="col-md-4">
 							<div class="fh5co-blog animate-box">
 								<div class="title title-pin text-center">
-									<span class="posted-on">Opublikowane: {{ post.date.strftime('%Y-%m-%d') }}</span>
-									<h3><a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}">{{
-										post.title }}</a></h3>
+									<span class="posted-on">Opublikowane: {{ product.date.strftime('%Y-%m-%d') }}</span>
+									<h3><a href="  {{ url_for('products.product', product_id=product.id) }}">{{
+										product.title }}</a></h3>
 									<span class="category">{{
-										post.category }}</span>
+										product.category }}</span>
 								</div>
-								<a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}"><img
+								<a href="  {{ url_for('products.product', product_id=product.id) }}"><img
 										class="img-responsive"
-										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
-										alt="/static/post_pics/blog-1.jpg"></a>
+										src="{{ url_for('static', filename='product_pics/' + product.product_image) }}"
+										alt="/static/product_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
-									<p>{{ post.text[:500]|safe }}...</p>
-									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
-										post.author.first_name }}</a>
+									<p>{{ product.text[:500]|safe }}...</p>
+									<a href="{{ url_for('users.user_posts', username=product.author.username) }}">Autor: {{
+										product.author.first_name }}</a>
 
 								</div>
 							</div>
 						</div>
-						{% else %}
 
-
-						<div class="col-md-6">
-							<div class="fh5co-blog animate-box">
-								<div class="title title-pin text-center">
-									<span class="posted-on">Opublikowane: {{ post.date.strftime('%Y-%m-%d') }}</span>
-									<h3><a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}">{{
-										post.title }}</a></h3>
-									<span class="category">{{
-										post.category }}</span>
-								</div>
-								<a href="  {{ url_for('blogPosts.blog_post', blog_post_id=post.id) }}"><img
-										class="img-responsive"
-										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
-										alt="/static/post_pics/blog-1.jpg"></a>
-								<div class="blog-text text-center">
-									<p>{{ post.text[:500]|safe }}...</p>
-									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
-										post.author.first_name }}</a>
-
-								</div>
-							</div>
-						</div>
-						{% endif %}
 						{% endfor %}
 
 
@@ -108,5 +82,5 @@
 
 	</div>
 
-	{% endblock %}
 
+	{% endblock %}

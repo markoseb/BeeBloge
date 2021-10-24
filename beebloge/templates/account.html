@@ -1,12 +1,12 @@
 {% extends "base.html" %}
   {%import "bootstrap/wtf.html" as wtf%}
   {% block content %}
-<div class="row animate-box">
-        <div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
-          <h2><span>Moje konto</span></h2>
-        </div>
-      </div>
-  <div class="jumbotron" >
+  <div class="row animate-box">
+    <div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+      <h2><span>Moje konto</span></h2>
+    </div>
+  </div>
+  <div class="jumbotron">
     <div align='center'>
       <h1>Witaj {{current_user.first_name}}!</h1>
       <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
@@ -38,4 +38,4 @@
 
   </div>
 
-{% endblock content %}
+  {% endblock content %}

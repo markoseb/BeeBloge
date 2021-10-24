@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -54,4 +55,43 @@
 </url>
 
 
+=======
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://roztanczonapszczolka.pl/</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/login</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/6</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/info</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/7</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/8</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/9</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/register</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://roztanczonapszczolka.pl/login?next=/account</loc>
+    <changefreq>daily</changefreq>
+  </url>
+>>>>>>> develop
 </urlset>

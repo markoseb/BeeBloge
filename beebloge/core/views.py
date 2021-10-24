@@ -4,11 +4,9 @@ from beebloge.models import BlogPost
 core = Blueprint('core',__name__)
 
 
-
 @core.route('/index')
 def indexRedirect():
   return redirect('/')
-
 
 
 @core.route('/')
@@ -30,17 +28,3 @@ def info():
     Example view of any other "core" page.
     '''
     return render_template('info.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
