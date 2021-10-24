@@ -1,0 +1,11 @@
+/2137.txt
+/test.py
+migrations
+.idea/
+beebloge/__pycache__/
+beebloge/core/__pycache__/
+beebloge/error_pages/__pycache__/
+beebloge/static/sass/
+beebloge/templates/fonts/
+beebloge/users/__pycache__/
+.gitignore
