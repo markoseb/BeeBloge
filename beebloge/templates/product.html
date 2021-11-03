@@ -6,7 +6,7 @@
     <h2>Autor: {{product.author.first_name}}</h2>
     <h2>Kategoria: {{product.category}}</h2>
     <h3>Opublikowano: {{ product.date.strftime('%B %d, %Y') }}</h3>
-    <p contenteditable="true">{{ product.text|safe }}</p>
+    {{ product.text|safe|urlize }}
 
 
   </div>
@@ -17,7 +17,7 @@
   </div>
   {% endif %}
 
-  <form class="form-group row" method="POST" action="">
+  <form class="form-group row" method="POST" >
     {{ form.hidden_tag() }}
     {{form.comment.label(style="margin-left: 1vw")}}
     {{form.comment(class="new-comment",style="margin-left: 1vw;margin-bottom: 1em;width: 98%")}}

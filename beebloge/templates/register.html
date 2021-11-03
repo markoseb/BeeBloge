@@ -15,23 +15,23 @@
 						{{ form.hidden_tag() }}
 						<div class="form-group row">
 							<div class="col-md-6 field">
-								<label for="name">Nazwa użytkownika</label>
+								<label>Nazwa użytkownika</label>
 								{{ form.username(class="form-control") }}
 							</div>
 							<div class="col-md-6 field">
-								<label for="email">Email</label>
+								<label>Email</label>
 								{{ form.email(class="form-control") }}
 							</div>
 						</div>
 						<div class="form-group row">
 
 							<div class="col-md-6 field">
-								<label for="pas">Hasło</label>
+								<label>Hasło</label>
 								{{ form.password(class="form-control") }}
 							</div>
 
 							<div class="col-md-6 field">
-								<label for="cpas">Potwierdź Hasło</label>
+								<label>Potwierdź Hasło</label>
 								{{ form.pass_confirm(class="form-control") }}
 							</div>
 						</div>
@@ -60,10 +60,10 @@
 								<h2><span>O Mnie</span></h2>
 							</div>
 							<div class="fh5co-staff">
-								<img src="/static/profile_pics/Maria.jpg">
+								<img src="/static/profile_pics/Maria.jpg" alt="CEO pictrure">
 								<h3>Maria Mucha</h3>
 								<strong class="role">Założycielka bloga</strong>
-								<p href="{{ url_for('core.info') }}">Mam na imię Maria i jestem studentką
+								<p>Mam na imię Maria i jestem studentką
 									Technologii Chemicznej na PW. Moją największą pasją jest wspinaczka i od
 									jakiegoś czasu wszystko co jest związane z pszczołami, stąd pomysł na stworzenie
 									tego bloga. :)</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-	<html>
+	<html lang="pl">
 	<head>
 
 		<meta charset="utf-8">
@@ -40,14 +40,14 @@
 		<![endif]-->
 
 
-		<script type="text/javascript" src="/static/js/ckeditor/ckeditor.js"></script>
+		<script  src="/static/js/ckeditor/ckeditor.js"></script>
 
 
 	</head>
 	<body>
 	<div class="fh5co-loader"></div>
 	<div id="page">
-		<nav class="fh5co-nav" role="navigation">
+		<nav class="fh5co-nav" >
 			<div class="container-fluid">
 				<div class="row">
 					<div class="top-menu">
@@ -69,15 +69,14 @@
 										<li><a href="{{ url_for('users.login') }}">Zaloguj się</a></li>
 										<li><a href="{{ url_for('users.register') }}">Rejestracja</a></li>
 										{% endif %}
-
-
-
 									</ul>
 								</div>
 										<div class="col-sm-3">
 											<div class="fh5co-social-icons">
-												<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
-												<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
+												<ul>
+													<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
+													<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
+												</ul>
 											</div>
 										</div>
 							</div>
@@ -89,7 +88,7 @@
 					<div class="col-xs-12 text-center menu-2">
 						<div id="fh5co-logo">
 							<a href="{{ url_for('core.index') }}">
-								<img id="logo" src="/static/pics/logo.png">
+								<img id="logo" src="/static/pics/logo.png" alt="Bee logo">
 							</a>
 						</div>
 					</div>
@@ -105,7 +104,7 @@
 		</div>
 
 
-		<footer id="fh5co-footer" role="contentinfo">
+		<footer id="fh5co-footer" >
 
 				<p>
 
@@ -117,8 +116,8 @@
 					<div class="col-md-3 col-md-push-1">
 						<ul class="fh5co-footer-links">
 
-							<li><a href="{{ url_for('core.index') }}"><img src="/static/pics/headerlogo.png"></a></li>
-							<li><h1 href="{{ url_for('core.index') }}">Roztańczona Pszczółka</h1></li>
+							<li><a href="{{ url_for('core.index') }}"><img src="/static/pics/headerlogo.png" alt="Header logo"></a></li>
+							<li><h1  data-url_root="{{ url_for('core.index') }}">Roztańczona Pszczółka</h1></li>
 						</ul>
 					</div>
 
@@ -129,7 +128,6 @@
 							<li><a href="{{ url_for('core.index') }}">Strona Główna</a></li>
 							<li><a href="{{ url_for('core.info') }}">O mnie</a></li>
 							<li><a href="{{ url_for('users.account') }}">Konto</a></li>
-
 						</ul>
 					</div>
 
@@ -143,14 +141,13 @@
 						</ul>
 					</div>
 					<div class="col-md-3 col-md-push-1">
-						<ul class="fh5co-footer-links">
-							<div class="fh5co-social-icons icons-footer" >
+						<div class="fh5co-social-icons icons-footer" >
+							<ul class="fh5co-footer-links">
 								<li><a href="https://www.facebook.com/maria.wiedenska5"><i class="icon-facebook-with-circle"></i></a></li>
 								<li><a href="https://www.instagram.com/maria_muszka/"><i class="icon-instagram-with-circle"></i></a></li>
-							</div>
-						</ul>
+							</ul>
+						</div>
 					</div>
-
 				</div>
 
 				<div class="row copyright">

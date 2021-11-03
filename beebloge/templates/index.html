@@ -36,10 +36,9 @@
 										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
 										alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
-									<p>{{ post.text[:500]|safe }}...</p>
-									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
+									<p>{{ post.text|striptags|truncate(500,true)}}</p>
+									<a href="{{url_for('users.user_posts', username=post.author.username)}}">Autor: {{
 										post.author.first_name }}</a>
-
 								</div>
 							</div>
 						</div>
@@ -60,7 +59,7 @@
 										src="{{ url_for('static', filename='post_pics/' + post.post_image) }}"
 										alt="/static/post_pics/blog-1.jpg"></a>
 								<div class="blog-text text-center">
-									<p>{{ post.text[:500]|safe }}...</p>
+									<p>{{ post.text|striptags|truncate(300,true)}}</p>
 									<a href="{{ url_for('users.user_posts', username=post.author.username) }}">Autor: {{
 										post.author.first_name }}</a>
 
@@ -83,10 +82,10 @@
 								<h2><span>O Mnie</span></h2>
 							</div>
 							<div class="fh5co-staff">
-								<img src="/static/profile_pics/Maria.jpg">
+								<img src="/static/profile_pics/Maria.jpg" alt="CEO pictrure">
 								<h3>Maria Mucha</h3>
 								<strong class="role">Założycielka bloga</strong>
-								<p href="{{ url_for('core.info') }}">Mam na imię Maria i jestem studentką Technologii
+								<p>Mam na imię Maria i jestem studentką Technologii
 									Chemicznej na PW. Moją największą pasją jest wspinaczka i od jakiegoś czasu wszystko
 									co jest związane z pszczołami, stąd pomysł na stworzenie tego bloga. :)</p>
 
@@ -96,7 +95,6 @@
 									<li><a href="https://www.instagram.com/maria_muszka/"><i
 											class="icon-instagram-with-circle"></i></a></li>
 								</ul>
-
 							</div>
 						</div>
 					</div>
