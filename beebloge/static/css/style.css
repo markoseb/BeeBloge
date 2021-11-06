@@ -767,7 +767,7 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 .fh5co-blog .title .category {
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-size: 13px;
   font-weight: 700;
   position: relative;
@@ -776,21 +776,21 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-blog .title .category:before {
   position: absolute;
   top: 5px;
-  left: -120px;
+  left: -90px;
   right: 0;
   bottom: 0;
   content: '';
-  width: 100px;
+  width: 70px;
   height: 1px;
   background: rgba(0, 0, 0, 0.08);
 }
 .fh5co-blog .title .category:after {
   position: absolute;
   top: 5px;
-  right: -120px;
+  right: -90px;
   bottom: 0;
   content: '';
-  width: 100px;
+  width: 70px;
   height: 1px;
   background: rgba(0, 0, 0, 0.09);
 }
