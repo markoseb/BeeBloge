@@ -1,4 +1,4 @@
-from flask import render_template,url_for, redirect,request,Blueprint
+from flask import render_template,url_for, redirect,request,Blueprint, flash
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db
@@ -18,11 +18,11 @@ products = Blueprint('products', __name__)
 def create_product():
     form = ProductForm()
 
-    if form.validate_on_submit() :
+    if form.validate_on_submit() and form.check_title():
 
         if form.picture.data:
-            imgname = "".join([form.title.data[:10], form.category.data])
-            pic = add_pic(form.picture.data, imgname, 'product_pics', (600, 600))
+            imgname = "".join([form.title.data[:20], form.category.data])
+            pic = add_pic(form.picture.data, imgname, 'product_pics', (450, 600))
 
             product = Product(title = form.title.data,
                              text = form.text.data,
@@ -33,8 +33,8 @@ def create_product():
 
             db.session.add(product)
             db.session.commit()
-        # flash("Blog Post Created")
-        return redirect(url_for('core.index'))
+            flash("Blog Post Created")
+            return redirect(url_for('core.index'))
 
     return render_template('addProduct.html',form = form)
 
@@ -63,11 +63,14 @@ def update(product_id):
         abort(403)
 
     form = ProductForm()
-    if form.picture.data:
-        imgname = "".join([form.title.data, form.category.data])
-        pic = add_pic(form.picture.data, imgname, 'product_pics', (800, 800))
-        product.post_image = pic
+
     if form.validate_on_submit() :
+        if form.picture.data:
+            imgname = "".join([form.title.data[:20], form.category.data])
+            del_pic(fileName=product.product_image)
+            pic = add_pic(form.picture.data, imgname, 'product_pics', (450, 600))
+            product.post_image = pic
+
         product.title = form.title.data
         product.text = form.text.data
         product.category = form.category.data

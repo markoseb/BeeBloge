@@ -747,7 +747,8 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 40px;
 }
 .fh5co-blog .title.title-pin h3 {
-  font-size: 34px;
+  font-size: 29px;
+  height: 8vh;
 }
 .fh5co-blog .title.title-pin h3 a {
   color: #000;
@@ -794,11 +795,43 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 1px;
   background: rgba(0, 0, 0, 0.09);
 }
+@media screen and (max-width: 1300px) {
+  .fh5co-blog .title .category:after {
+  right: -70px;
+  width: 50px;
+}
+
+.fh5co-blog .title .category:before {
+  left: -70px;
+  width: 50px;
+}
+
+}
+
+@media screen and (max-width: 992px) {
+  .fh5co-blog .title .category:after {
+  top: 5px;
+  right: -110px;
+  width: 90px;
+
+}
+
+.fh5co-blog .title .category:before {
+  top: 5px;
+  left: -110px;
+  right: 0;
+  width: 90px;
+
+}
+
+}
+
 .fh5co-blog .blog-text {
   margin-bottom: 30px;
   position: relative;
   width: 100%;
-  padding: 30px;
+  height: 39vh;
+  padding: 35px;
   float: left;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -808,6 +841,19 @@ h1, h2, h3, h4, h5, h6, figure {
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width: 1180px) {
+.fh5co-blog .blog-text {
+  padding: 20px;
+  height: 40vh;
+  }
+}
+@media screen and (max-width: 992px) {
+.fh5co-blog .blog-text {
+  padding: 35px;
+  height: 100%;
+  }
 }
 .fh5co-blog .blog-text span {
   display: inline-block;
