@@ -22,3 +22,10 @@ def add_pic(pic_upload, username_post,folder_name,pic_size=(200, 200)):
     pic.save(filepath)
 
     return storage_filename
+
+def del_pic(fileName,folder_name='product_pics'):
+
+    filepath = os.path.join(current_app.root_path, f'static/{folder_name}', fileName)
+
+    if os.path.exists(filepath):
+        os.remove(filepath)
