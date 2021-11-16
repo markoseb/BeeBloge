@@ -111,7 +111,7 @@ def products_list():
     number of posts by limiting its query size and then calling paginate.
     '''
     page = request.args.get('page', 1, type = int)
-    products = Product.query.order_by(Product.date.desc()).paginate(page = page, per_page = 10)
+    products = Product.query.order_by(Product.date.desc()).paginate(page = page, per_page = 60)
     return render_template('productList.html',products = products)
 
 
