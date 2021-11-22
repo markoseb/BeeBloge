@@ -28,7 +28,8 @@ def create_product():
                              text = form.text.data,
                              category = form.category.data,
                              user_id = current_user.id,
-                             product_image = pic)
+                             product_image = pic,
+                             shortText = form.shortText.data)
 
 
             db.session.add(product)
@@ -73,6 +74,7 @@ def update(product_id):
 
         product.title = form.title.data
         product.text = form.text.data
+        product.shortText = form.shortText.data
         product.category = form.category.data
 
         db.session.commit()
@@ -83,6 +85,7 @@ def update(product_id):
     elif request.method == 'GET':
         form.title.data = product.title
         form.text.data = product.text
+        form.shortText.data = product.shortText
         form.category.data = product.category
         form.picture.data = product.product_image
 

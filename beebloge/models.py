@@ -106,22 +106,24 @@ class Comment(db.Model):
 
 class Product(db.Model):
     # Setup the relationship to the User table
-    users = db.relationship(User, overlaps="author,products")
+    users = db.relationship(User, overlaps = "author,products")
     # Model for the Product on Website
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    product_image = db.Column(db.String(140), nullable=False, default='static/product_pics/blog-1.jpg')
-    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    title = db.Column(db.String(140), nullable=False)
-    category = db.Column(db.String(140),nullable=False)
-    text = db.Column(db.Text, nullable=False)
-    comments = db.relationship('Comment', backref=db.backref('product'), lazy='dynamic')
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    product_image = db.Column(db.String(140), nullable = False, default = 'static/product_pics/blog-1.jpg')
+    date = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    title = db.Column(db.String(140), nullable = False)
+    category = db.Column(db.String(140), nullable = False)
+    text = db.Column(db.Text, nullable = False)
+    shortText = db.Column(db.Text)
+    comments = db.relationship('Comment', backref = db.backref('product'), lazy = 'dynamic')
 
-    def __init__(self, title, text, product_image,user_id,category="Category" ):
+    def __init__(self, title, text, product_image, user_id, shortText = "", category = "Category" ):
         self.title = title
         self.text = text
+        self.shortText = shortText
         self.category = category
-        self.product_image=product_image
+        self.product_image = product_image
         self.user_id = user_id
 
 

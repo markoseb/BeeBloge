@@ -8,7 +8,7 @@ from flask import flash
 class ProductForm(FlaskForm):
     title = StringField('Nazwa produktu', validators=[DataRequired()])
     category = StringField('Kategoria',validators=[DataRequired()])
-    shortText = CKEditorField('Krótki opis', validators=[DataRequired()])
+    shortText = CKEditorField('Krótki opis')
     text = CKEditorField('Opis', validators=[DataRequired()])
     picture = FileField('Zdjęcie', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Opublikuj')
