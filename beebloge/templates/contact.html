@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+	{%import "bootstrap/wtf.html" as wtf%}
+	{% block content %}
+
+
+	<div id="fh5co-content" class="fh5co-no-pd-top">
+		<div class="container">
+
+			<div class="row animate-box">
+				<div class="col-md-12 col-md-offset-0 text-center fh5co-heading">
+					<h2><span>Wiadomość</span></h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-9 col-padded-right">
+					<form action="#">
+						<div class="form-group row">
+							<div class="col-md-6 field">
+								{{wtf.form_field(form.firstName, class="form-control")}}
+							</div>
+							<div class="col-md-6 field">
+								{{wtf.form_field(form.lastName, class="form-control")}}
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6 field">
+								{{wtf.form_field(form.email, class="form-control")}}
+							</div>
+							<div class="col-md-6 field">
+								{{wtf.form_field(form.phone, class="form-control")}}
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12 field">
+								{{wtf.form_field(form.text, class="form-control")}}
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12 field">
+								{{form.submit(class="btn btn-outline-info",style="height:50px;width:100px")}}
+							</div>
+						</div>
+					</form>
+				</div>
+
+
+				<div class="col-md-3">
+					<div class="side animate-box">
+						<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+							<h2><span>O Mnie</span></h2>
+						</div>
+						<div class="fh5co-staff">
+							<img src="/static/profile_pics/Maria.jpg" alt="CEO pictrure">
+							<h3>Maria Mucha</h3>
+							<strong class="role">Założyciel bloga</strong>
+							<p>Mam na imię Maria i jestem studentką Technologii
+								Chemicznej na PW. Moją największą pasją jest wspinaczka i od jakiegoś czasu wszystko co
+								jest związane z pszczołami, stąd pomysł na stworzenie tego bloga. :)</p>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	{% endblock content %}

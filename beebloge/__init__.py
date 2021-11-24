@@ -59,6 +59,7 @@ from beebloge.blogPosts.views import blog_posts
 from beebloge.error_pages.handlers import error_pages
 from beebloge.comments.views import comments
 from beebloge.products.views import products
+from beebloge.messages.views import messages
 
 
 # Register the apps
@@ -69,6 +70,7 @@ app.register_blueprint(error_pages)
 
 app.register_blueprint(comments)
 app.register_blueprint(products)
+app.register_blueprint(messages)
 
 
 @app.before_request
