@@ -1,15 +1,15 @@
-from flask import url_for,redirect,Blueprint
+from flask import url_for, redirect, Blueprint
 from flask_login import login_required
 from flask_security import current_user
 from beebloge import db
-from beebloge.models import BlogPost,Comment,Product
+from beebloge.models import BlogPost, Comment, Product
 
-comments = Blueprint('comments',__name__)
+comments = Blueprint('comments', __name__)
 
 
-@comments.route('/comment/<int:comment_id>/<int:postProductId>/delete', methods=[ "POST"])
+@comments.route('/comment/<int:comment_id>/<int:postProductId>/delete', methods=["POST"])
 @login_required
-def delete_comment(postProductId,comment_id):
+def delete_comment(postProductId, comment_id):
     comment = Comment.query.get_or_404(comment_id)
 
     if comment.author == current_user or current_user.has_role('admin'):
@@ -24,6 +24,3 @@ def delete_comment(postProductId,comment_id):
             return redirect(url_for('products.product', product_id=product.id))
     else:
         abort(403)
-
-
-

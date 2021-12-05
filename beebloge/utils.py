@@ -1,5 +1,6 @@
-from flask_security.utils import _security, _pwd_context,get_hmac
+from flask_security.utils import _security, _pwd_context, get_hmac
 from werkzeug.security import check_password_hash
+
 
 def verify_password(password, password_hash):
     """Returns ``True`` if the password matches the supplied hash.

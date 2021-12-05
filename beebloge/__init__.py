@@ -34,7 +34,6 @@ db = SQLAlchemy(app)
 
 Migrate(app, db)
 
-
 ###########################
 #### LOGIN CONFIGS #######
 #########################
@@ -59,8 +58,6 @@ from beebloge.blogPosts.views import blog_posts
 from beebloge.error_pages.handlers import error_pages
 from beebloge.comments.views import comments
 from beebloge.products.views import products
-from beebloge.messages.views import messages
-
 
 # Register the apps
 app.register_blueprint(users)
@@ -70,7 +67,6 @@ app.register_blueprint(error_pages)
 
 app.register_blueprint(comments)
 app.register_blueprint(products)
-app.register_blueprint(messages)
 
 
 @app.before_request
@@ -82,7 +78,6 @@ def redirect_nonwww():
         urlparts_list[1] = "www.roztanczonapszczolka.pl"
         urlparts_list[0] = "https"
         return redirect(urlunparse(urlparts_list), code=301)
-
 
 
 @app.route('/robots.txt')

@@ -62,9 +62,6 @@
 										<li class="active"><a href="{{ url_for('core.index') }}">Strona główna</a></li>
 										<li><a href="{{ url_for('products.products_list') }}">Rękodzieła</a></li>
 										<li><a href="{{ url_for('core.info') }}">O mnie</a></li>
-										{% if not current_user.has_role('admin') %}
-										<li><a href="{{ url_for('messages.create_message') }}">Napisz do mnie</a></li>
-										{% endif %}
 										{% if current_user.is_authenticated %}
 										<li><a href="{{ url_for('users.logout') }}">Wyloguj się</a></li>
 										<li><a href="{{ url_for('users.account') }}">Konto</a></li>
