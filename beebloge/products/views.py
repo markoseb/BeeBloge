@@ -1,12 +1,13 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
 from flask_login import login_required
 from flask_security import current_user
+
 from beebloge import db
+from beebloge.comments.forms import CommentForm
 from beebloge.models import Comment, Product
+from beebloge.products.forms import ProductForm
 from beebloge.users.picture_handler import add_pic, del_pic
 from beebloge.users.views import requires_roles
-from beebloge.products.forms import ProductForm
-from beebloge.comments.forms import CommentForm
 
 products = Blueprint('products', __name__)
 
@@ -114,4 +115,8 @@ def products_list():
     '''
     page = request.args.get('page', 1, type=int)
     products = Product.query.order_by(Product.date.desc()).paginate(page=page, per_page=60)
-    return render_template('productList.html', products=products)
+    categories = Product.get_category_list()
+    # if request.method == 'POST':
+    #     products.filter(Product.category.like('%' + val + '%'))
+
+    return render_template('productList.html', products=products, categories=categories)

@@ -133,3 +133,8 @@ class Product(db.Model):
 
     def __repr__(self):
         return f"Product Id: {self.id} --- Date: {self.date} --- Title: {self.title}"
+
+    @classmethod
+    def get_category_list(cls):
+        categories = db.session.query(cls.category).distinct(cls.category.name).all()
+        return [category[0] for category in categories]
