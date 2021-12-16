@@ -28,9 +28,10 @@ After downloading run:
 ## About
 
 Bloge repository. Using current api version you can:
-*	create account\register to post
-*	edit/delete posts
-*	view posts
+* create account\register to post
+* edit/delete posts
+* view posts
+* comment
 
 
 ## Preview

@@ -16,7 +16,7 @@ def index():
     number of posts by limiting its query size and then calling paginate.
     '''
     page = request.args.get('page', 1, type=int)
-    blog_posts = BlogPost.query.order_by(BlogPost.date.desc()).paginate(page=page, per_page=10)
+    blog_posts = BlogPost.query.order_by(BlogPost.date.desc()).paginate(page=page, per_page=100)
     return render_template('index.html', blog_posts=blog_posts)
 
 

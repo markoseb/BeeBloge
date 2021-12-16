@@ -2,7 +2,7 @@ from beebloge import db,login_manager
 from datetime import datetime
 from flask_security import RoleMixin,UserMixin
 from beebloge.utils import verify_password
-
+from flask import request
 
 # The user_loader decorator allows flask-login to load the current user
 # and grab their id.
@@ -138,3 +138,18 @@ class Product(db.Model):
     def get_category_list(cls):
         categories = db.session.query(cls.category).distinct(cls.category.name).all()
         return [category[0] for category in categories]
+
+    @classmethod
+    def find_by_category(cls, category):
+        page = request.args.get('page', 1, type=int)
+        products = Product.query
+        products = products.filter(Product.category.like('%' + category + '%'))
+        products = products.order_by(Product.date.desc())
+        return products.paginate(page=page, per_page=100)
+
+    @classmethod
+    def get_products_list(cls):
+        page = request.args.get('page', 1, type=int)
+        products = Product.query.order_by(Product.date.desc())
+
+        return products.paginate(page=page, per_page=100)

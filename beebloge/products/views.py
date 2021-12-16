@@ -113,10 +113,14 @@ def products_list():
     This is the home page view. Use pagination to show a limited
     number of posts by limiting its query size and then calling paginate.
     '''
-    page = request.args.get('page', 1, type=int)
-    products = Product.query.order_by(Product.date.desc()).paginate(page=page, per_page=60)
     categories = Product.get_category_list()
-    # if request.method == 'POST':
-    #     products.filter(Product.category.like('%' + val + '%'))
+    products = Product.get_products_list()
 
+    return render_template('productList.html', products=products, categories=categories)
+
+
+@products.route('/product/list/filter/<string:query>', methods=['POST', 'GET'])
+def products_list_filter(query):
+    categories = Product.get_category_list()
+    products = Product.find_by_category(query)
     return render_template('productList.html', products=products, categories=categories)

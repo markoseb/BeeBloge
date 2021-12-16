@@ -50,8 +50,9 @@
                             <h2><span>Kategoria</span></h2>
                         </div>
                         <ul class="category">
-                             {% for category in categories %}
-                            <li><a href="#"><i class="icon-check"></i>{{category}}</a></li>
+                            {% for category in categories %}
+                            <li><a href="{{ url_for('products.products_list_filter', query=category) }}"><i
+                                    class="icon-check"></i>{{category}}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
