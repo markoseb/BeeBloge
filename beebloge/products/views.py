@@ -8,6 +8,7 @@ from beebloge.models import Comment, Product
 from beebloge.products.forms import ProductForm
 from beebloge.users.picture_handler import add_pic, del_pic
 from beebloge.users.views import requires_roles
+import urllib.parse
 
 products = Blueprint('products', __name__)
 
@@ -26,6 +27,7 @@ def create_product():
 
             Product(title           =form.title.data,
                     text            =form.text.data,
+                    short_text      =form.shortText.data,
                     category        =form.category.data,
                     user_id         =current_user.id,
                     product_image   =pic)
@@ -78,6 +80,7 @@ def update(product_id):
         product.title       = form.title.data
         product.text        = form.text.data
         product.category    = form.category.data
+        product.short_text  = form.shortText.data
 
         db.session.commit()
         # flash('Post Updated')
@@ -87,6 +90,7 @@ def update(product_id):
     elif request.method == 'GET':
         form.title.data     = product.title
         form.text.data      = product.text
+        form.shortText.data = product.short_text
         form.category.data  = product.category
         form.picture.data   = product.product_image
 
@@ -122,5 +126,5 @@ def products_list():
 @products.route('/product/list/filter/<string:query>', methods=['POST', 'GET'])
 def products_list_filter(query):
     categories = Product.get_category_list()
-    products = Product.find_by_category(query)
+    products = Product.find_by_category(urllib.parse.unquote(query))
     return render_template('productList.html', products=products, categories=categories)

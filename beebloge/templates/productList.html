@@ -15,7 +15,6 @@
             <div class="col-md-9 col-padded-right">
                 <div class="row">
 
-                    {# Go through each blog post #}
                     {% for product in products.items %}
 
                     <div class="col-md-4">
@@ -32,7 +31,11 @@
                                     src="{{ url_for('static', filename='product_pics/' + product.product_image) }}"
                                     alt="/static/product_pics/blog-1.jpg"></a>
                             <div class="blog-text text-center">
+                                {% if product.short_text %}
+                                <p>{{ product.short_text|striptags|truncate(200,true)}}</p>
+                                {% else %}
                                 <p>{{ product.text|striptags|truncate(200,true)}}</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

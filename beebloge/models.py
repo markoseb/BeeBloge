@@ -119,11 +119,13 @@ class Product(db.Model):
     title           = db.Column(db.String(140), nullable=False)
     category        = db.Column(db.String(140),nullable=False)
     text            = db.Column(db.Text, nullable=False)
+    short_text      = db.Column(db.Text)
     comments        = db.relationship('Comment', backref=db.backref('product'), lazy='dynamic')
 
-    def __init__(self, title, text, product_image,user_id,category="Category" ):
+    def __init__(self, title, text, short_text, product_image,user_id,category="Category" ):
         self.title          = title
         self.text           = text
+        self.short_text     = short_text
         self.category       = category
         self.product_image  = product_image
         self.user_id        = user_id
@@ -142,9 +144,8 @@ class Product(db.Model):
     @classmethod
     def find_by_category(cls, category):
         page = request.args.get('page', 1, type=int)
-        products = Product.query
+        products = Product.query.order_by(Product.date.desc())
         products = products.filter(Product.category.like('%' + category + '%'))
-        products = products.order_by(Product.date.desc())
         return products.paginate(page=page, per_page=100)
 
     @classmethod
