@@ -8,54 +8,139 @@
 
 
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/product/list</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/product/list</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/info</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/info</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/login</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/login</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/register</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/register</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/post/9</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/post/9</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/post/8</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/post/8</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/post/7</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/post/7</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/post/6</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/post/6</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.roztanczonapszczolka.pl/login?next=%2Faccount</loc>
-  <lastmod>2021-10-25T17:34:58+00:00</lastmod>
+  <loc>http://www.roztanczonapszczolka.pl/login?next=%2Faccount</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/19</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/18</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/17</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/16</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/15</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/14</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/12</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/11</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/10</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/9</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/8</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/5</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/3</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/list/filter/DO%20W%C5%81OS%C3%93W</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/list/filter/SERUM</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/list/filter/DO%20CIA%C5%81A</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://www.roztanczonapszczolka.pl/product/list/filter/DO%20TWARZY</loc>
+  <lastmod>2021-12-17T16:42:19+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 

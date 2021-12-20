@@ -7,6 +7,10 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from urllib.parse import urlparse, urlunparse
+import configparser
+
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -17,7 +21,7 @@ ckeditor = CKEditor(app)
 
 # export SECRET_KEY=mysecret
 # set SECRET_KEY=mysecret
-app.config['SECRET_KEY'] = 'mysecret'
+app.config['SECRET_KEY'] = config["SECRET_KEY"]["SECRET_KEY"]
 
 #################################
 ### DATABASE SETUPS ############
@@ -27,8 +31,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config['SECURITY_PASSWORD_HASH'] = 'sha512_crypt'
-app.config['SECURITY_PASSWORD_SALT'] = 'sha256'
+app.config['SECURITY_PASSWORD_HASH'] = config["SECURITY_PASSWORD"]["HASH"]
+app.config['SECURITY_PASSWORD_SALT'] = config["SECURITY_PASSWORD"]["SALT"]
 
 db = SQLAlchemy(app)
 
